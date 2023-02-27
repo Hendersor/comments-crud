@@ -1,0 +1,22 @@
+{
+  "name": "-y",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hendersor/comments-crud.git"
+  },
+  "author": "Francisco Montejo <montejof@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hendersor/comments-crud/issues"
+  },
+  "homepage": "https://github.com/Hendersor/comments-crud#readme",
+  "dependencies": {
+    "sass": "^1.58.3"
+  }
+}
