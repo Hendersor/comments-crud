@@ -1,1 +1,1 @@
-{"version":3,"sources":["../styles/mobiles.scss","mobiles.css"],"names":[],"mappings":"AAAA;EACE,YAAA;ACCF","file":"mobiles.css"}
+{"version":3,"sources":["../styles/mobiles.scss","../styles/globals.scss","mobiles.css"],"names":[],"mappings":"AAEA;EACE,oCCMc;EDLd,sBAAA;EACA,gBAAA;AEDF","file":"mobiles.css"}
