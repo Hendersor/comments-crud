@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Hendersor/comments-crud#readme",
   "dependencies": {
+    "@faker-js/faker": "^7.6.0",
     "sass": "^1.58.3"
   }
 }
