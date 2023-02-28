@@ -7,7 +7,8 @@ body {
   background-color: globals.$veryLightGray;
   box-sizing: border-box;
   font-size: 62.5%;
-  margin: 0 10px;
+  margin: 20px 10px;
+  height: auto;
 }
 
 .create-comment,
@@ -70,6 +71,88 @@ body {
       border-radius: 5px;
       font-size: 1rem;
       cursor: pointer;
+    }
+  }
+}
+
+.commentContainer {
+  padding: 12px;
+  height: 248px;
+  border-radius: 5px;
+  background-color: globals.$white;
+  .commentContainer__info {
+    .commentContainer__info__name {
+      display: flex;
+      justify-content: left;
+      figure {
+        width: 50px;
+        height: 50px;
+        background-image: url("https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521532/interactive-comments-section-main/images/avatars/image-amyrobson_busbm4.png");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin: 0;
+      }
+      h2 {
+        font-size: 1rem;
+        font-weight: 500;
+      }
+
+      p {
+        color: globals.$grayishBlue;
+        font-weight: 500;
+        font-size: 0.8rem;
+      }
+
+      h2,
+      p {
+        margin-left: 12px;
+      }
+    }
+  }
+
+  .commentContainer__comment {
+    p {
+      font-size: 1rem;
+      color: globals.$grayishBlue;
+      font-weight: 400;
+      line-height: 25px;
+    }
+
+    .commentContainer__comment__modify {
+      display: flex;
+      justify-content: space-between;
+      .commentContainer__comment__modify__votes {
+        h1 {
+          color: globals.$moderateBlue;
+          font-size: 1rem;
+        }
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100px;
+        height: 40px;
+        background-color: globals.$veryLightGray;
+        border-radius: 5px;
+        img {
+          cursor: pointer;
+        }
+      }
+
+      .commentContainer__comment__modify__edit {
+        width: 70px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: globals.$moderateBlue;
+        font-weight: 700;
+        font-size: 0.6rem;
+        cursor: pointer;
+        img {
+          height: 16px;
+          width: 16px;
+        }
+      }
     }
   }
 }
