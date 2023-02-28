@@ -7,7 +7,7 @@ body {
   background-color: globals.$veryLightGray;
   box-sizing: border-box;
   font-size: 62.5%;
-  margin: 20px 10px;
+  margin: 20px 15px;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -26,8 +26,9 @@ body {
   height: 160px;
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  // padding: 15px;
   margin-top: 20px;
+  width: 100%;
   .create-comment__extrasContainer,
   input {
     width: 99%;
