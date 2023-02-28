@@ -1,1 +1,27 @@
-/*# sourceMappingURL=desktop.css.map */
+.create-comment {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.create-comment .create-comment__img-Container {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin: 0;
+  background-image: url("https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521531/interactive-comments-section-main/images/avatars/image-juliusomo_fatg2m.webp");
+  background-position: center;
+  background-size: cover;
+}
+.create-comment .create-comment__textArea {
+  width: 70%;
+}
+.create-comment .desktopVisible {
+  display: flex;
+}
+.create-comment .desktopInv {
+  display: none;
+}
+.create-comment .create-comment__extrasContainer {
+  width: auto;
+  height: auto;
+}/*# sourceMappingURL=desktop.css.map */
