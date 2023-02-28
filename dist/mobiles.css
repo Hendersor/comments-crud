@@ -86,7 +86,7 @@ body {
 
 .commentContainer {
   padding: 12px;
-  height: 248px;
+  height: auto;
   border-radius: 5px;
   background-color: hsl(0, 0%, 100%);
   margin-bottom: 20px;
@@ -160,7 +160,7 @@ body {
 
 .commentReplyContainer {
   padding: 12px;
-  height: 280px;
+  height: auto;
   border-radius: 5px;
   background-color: hsl(0, 0%, 100%);
   margin-bottom: 20px;

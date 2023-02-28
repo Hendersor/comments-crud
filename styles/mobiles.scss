@@ -92,7 +92,8 @@ body {
 // Styles for the comment component
 .commentContainer {
   padding: 12px;
-  height: 248px;
+  // height: 248px;
+  height: auto;
   border-radius: 5px;
   background-color: globals.$white;
   margin-bottom: 20px;
@@ -176,7 +177,8 @@ body {
 // Styles for the reply component
 .commentReplyContainer {
   padding: 12px;
-  height: 280px;
+  // height: 280px;
+  height: auto;
   border-radius: 5px;
   background-color: globals.$white;
   margin-bottom: 20px;
