@@ -47,6 +47,9 @@ body {
   font-family: "Rubik", sans-serif;
   padding: 8px 15px;
 }
+.create-comment .notVisible {
+  display: none;
+}
 .create-comment .create-comment__input::-moz-placeholder {
   font-family: "Rubik", sans-serif;
 }
@@ -60,7 +63,10 @@ body {
   height: 40%;
 }
 .create-comment .create-comment__extrasContainer .create-comment__img-Container {
-  background-color: greenyellow;
+  background-image: url("https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521531/interactive-comments-section-main/images/avatars/image-juliusomo_fatg2m.webp");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   width: 40px;
   height: 40px;
   border-radius: 50%;

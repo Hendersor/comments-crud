@@ -26,9 +26,10 @@ body {
   height: 160px;
   display: flex;
   flex-direction: column;
-  // padding: 15px;
+
   margin-top: 20px;
   width: 100%;
+
   .create-comment__extrasContainer,
   input {
     width: 99%;
@@ -51,6 +52,10 @@ body {
     padding: 8px 15px;
   }
 
+  .notVisible {
+    display: none;
+  }
+
   .create-comment__input::placeholder {
     font-family: globals.$font;
   }
@@ -61,7 +66,10 @@ body {
     justify-content: space-between;
     height: 40%;
     .create-comment__img-Container {
-      background-color: greenyellow;
+      background-image: url("https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521531/interactive-comments-section-main/images/avatars/image-juliusomo_fatg2m.webp");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
       width: 40px;
       height: 40px;
       border-radius: 50%;
