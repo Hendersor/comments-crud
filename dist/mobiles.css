@@ -94,6 +94,7 @@ body {
 .commentContainer .commentContainer__info .commentContainer__info__name {
   display: flex;
   justify-content: left;
+  align-items: center;
 }
 .commentContainer .commentContainer__info .commentContainer__info__name figure {
   width: 50px;
@@ -170,6 +171,7 @@ body {
 .commentReplyContainer .commentReplyContainer__info .commentReplyContainer__info__name {
   display: flex;
   justify-content: left;
+  align-items: center;
 }
 .commentReplyContainer .commentReplyContainer__info .commentReplyContainer__info__name figure {
   width: 50px;
@@ -236,4 +238,112 @@ body {
 .commentReplyContainer .commentReplyContainer__comment .commentReplyContainer__comment__modify .commentReplyContainer__comment__modify__reply img {
   height: 16px;
   width: 16px;
+}
+
+.yourCommentContainer {
+  padding: 12px;
+  height: auto;
+  border-radius: 5px;
+  background-color: hsl(0, 0%, 100%);
+  margin-bottom: 20px;
+}
+.yourCommentContainer .yourCommentContainer__info .yourCommentContainer__info__name {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.yourCommentContainer .yourCommentContainer__info .yourCommentContainer__info__name span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: hsl(238, 40%, 52%);
+  color: white;
+  font-weight: 500;
+  width: 40px;
+  height: 20px;
+  font-size: 0.8rem;
+  border-radius: 3px;
+}
+.yourCommentContainer .yourCommentContainer__info .yourCommentContainer__info__name figure {
+  width: 50px;
+  height: 50px;
+  background-image: url("https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521532/interactive-comments-section-main/images/avatars/image-amyrobson_busbm4.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0;
+}
+.yourCommentContainer .yourCommentContainer__info .yourCommentContainer__info__name h2 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-right: 5px;
+}
+.yourCommentContainer .yourCommentContainer__info .yourCommentContainer__info__name p {
+  color: hsl(211, 10%, 45%);
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+.yourCommentContainer .yourCommentContainer__info .yourCommentContainer__info__name h2,
+.yourCommentContainer .yourCommentContainer__info .yourCommentContainer__info__name p {
+  margin-left: 12px;
+}
+.yourCommentContainer .commentContainer__comment p {
+  font-size: 1rem;
+  color: hsl(211, 10%, 45%);
+  font-weight: 400;
+  line-height: 25px;
+}
+.yourCommentContainer .commentContainer__comment .commentContainer__comment__modify {
+  display: flex;
+  justify-content: space-between;
+}
+.yourCommentContainer .commentContainer__comment .commentContainer__comment__modify .commentContainer__comment__modify__votes {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100px;
+  height: 40px;
+  background-color: hsl(228, 33%, 97%);
+  border-radius: 5px;
+}
+.yourCommentContainer .commentContainer__comment .commentContainer__comment__modify .commentContainer__comment__modify__votes h1 {
+  color: hsl(238, 40%, 52%);
+  font-size: 1rem;
+}
+.yourCommentContainer .commentContainer__comment .commentContainer__comment__modify .commentContainer__comment__modify__votes img {
+  cursor: pointer;
+}
+.yourCommentContainer .commentContainer__comment .commentContainer__comment__modify .commentContainer__comment__modify__container {
+  display: flex;
+  width: 200px;
+}
+.yourCommentContainer .commentContainer__comment .commentContainer__comment__modify .commentContainer__comment__modify__container .modifier_container {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  cursor: pointer;
+}
+.yourCommentContainer .commentContainer__comment .commentContainer__comment__modify .commentContainer__comment__modify__container .modifier_container figure {
+  height: 30px;
+  width: 25px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.yourCommentContainer .commentContainer__comment .commentContainer__comment__modify .commentContainer__comment__modify__container .modifier_container figure img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.yourCommentContainer .commentContainer__comment .commentContainer__comment__modify .commentContainer__comment__modify__container .modifier_container .edit {
+  color: hsl(238, 40%, 52%);
+}
+.yourCommentContainer .commentContainer__comment .commentContainer__comment__modify .commentContainer__comment__modify__container .modifier_container .delete {
+  color: hsl(358, 79%, 66%);
+}
+.yourCommentContainer .commentContainer__comment .commentContainer__comment__modify .commentContainer__comment__modify__container .modifier_container p {
+  font-size: 1rem;
+  font-weight: 500;
 }/*# sourceMappingURL=mobiles.css.map */

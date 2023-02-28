@@ -100,6 +100,8 @@ body {
     .commentContainer__info__name {
       display: flex;
       justify-content: left;
+      align-items: center;
+
       figure {
         width: 50px;
         height: 50px;
@@ -187,6 +189,8 @@ body {
     .commentReplyContainer__info__name {
       display: flex;
       justify-content: left;
+      align-items: center;
+
       figure {
         width: 50px;
         height: 50px;
@@ -259,6 +263,123 @@ body {
         img {
           height: 16px;
           width: 16px;
+        }
+      }
+    }
+  }
+}
+
+.yourCommentContainer {
+  padding: 12px;
+  height: auto;
+  border-radius: 5px;
+  background-color: globals.$white;
+  margin-bottom: 20px;
+  .yourCommentContainer__info {
+    .yourCommentContainer__info__name {
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: globals.$moderateBlue;
+        color: white;
+        font-weight: 500;
+        width: 40px;
+        height: 20px;
+        font-size: 0.8rem;
+        border-radius: 3px;
+      }
+      figure {
+        width: 50px;
+        height: 50px;
+        background-image: url("https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521532/interactive-comments-section-main/images/avatars/image-amyrobson_busbm4.png");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin: 0;
+      }
+      h2 {
+        font-size: 1rem;
+        font-weight: 500;
+        margin-right: 5px;
+      }
+
+      p {
+        color: globals.$grayishBlue;
+        font-weight: 500;
+        font-size: 0.8rem;
+      }
+
+      h2,
+      p {
+        margin-left: 12px;
+      }
+    }
+  }
+
+  .commentContainer__comment {
+    p {
+      font-size: 1rem;
+      color: globals.$grayishBlue;
+      font-weight: 400;
+      line-height: 25px;
+    }
+
+    .commentContainer__comment__modify {
+      display: flex;
+      justify-content: space-between;
+      .commentContainer__comment__modify__votes {
+        h1 {
+          color: globals.$moderateBlue;
+          font-size: 1rem;
+        }
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100px;
+        height: 40px;
+        background-color: globals.$veryLightGray;
+        border-radius: 5px;
+        img {
+          cursor: pointer;
+        }
+      }
+
+      .commentContainer__comment__modify__container {
+        display: flex;
+        width: 200px;
+        .modifier_container {
+          display: flex;
+          width: 50%;
+          justify-content: center;
+          align-items: center;
+          height: 40px;
+          cursor: pointer;
+          figure {
+            height: 30px;
+            width: 25px;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            img {
+              object-fit: contain;
+            }
+          }
+          .edit {
+            color: globals.$moderateBlue;
+          }
+          .delete {
+            color: globals.$softRed;
+          }
+
+          p {
+            font-size: 1rem;
+            font-weight: 500;
+          }
         }
       }
     }
