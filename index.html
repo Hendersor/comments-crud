@@ -14,17 +14,24 @@
 
     <title>Document</title>
   </head>
-  <body>
+  <body id="body">
     <section id="commentsContainer" class="comments-container"></section>
     <section id="createComment" class="create-comment">
-      <div>
-        <input type="text" />
-      </div>
-      <div>
-        <figure>
+      <textarea
+        class="create-comment__textArea"
+        name=""
+        id=""
+        cols="30"
+        rows="10"
+        placeholder="Add a comment..."
+        maxlength="176"
+      ></textarea>
+
+      <div class="create-comment__extrasContainer">
+        <figure class="create-comment__img-Container">
           <img src="" alt="" />
         </figure>
-        <button>SEND</button>
+        <button class="interactionButton">SEND</button>
       </div>
     </section>
   </body>

@@ -1,5 +1,74 @@
+#body {
+  font-family: "Rubik", sans-serif;
+}
+
 body {
   background-color: hsl(228, 33%, 97%);
   box-sizing: border-box;
   font-size: 62.5%;
+  margin: 0 10px;
+}
+
+.create-comment,
+.comments-container {
+  background-color: hsl(0, 0%, 100%);
+}
+
+.create-comment {
+  border-radius: 5px;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  margin-top: 20px;
+}
+.create-comment .create-comment__extrasContainer,
+.create-comment input {
+  width: 99%;
+  display: flex;
+  align-items: start;
+  align-self: top;
+}
+.create-comment .create-comment__textArea {
+  height: 60%;
+  border-radius: 5px;
+  font-size: 1rem;
+  text-align: justify;
+  border: 0;
+  padding: 0;
+  border: 1px solid hsl(0, 0%, 90%);
+  outline: none;
+  resize: none;
+  font-family: "Rubik", sans-serif;
+  padding: 8px 15px;
+}
+.create-comment .create-comment__input::-moz-placeholder {
+  font-family: "Rubik", sans-serif;
+}
+.create-comment .create-comment__input::placeholder {
+  font-family: "Rubik", sans-serif;
+}
+.create-comment .create-comment__extrasContainer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 40%;
+}
+.create-comment .create-comment__extrasContainer .create-comment__img-Container {
+  background-color: greenyellow;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 0;
+}
+.create-comment .create-comment__extrasContainer .interactionButton {
+  background-color: hsl(238, 40%, 52%);
+  font-weight: 700;
+  color: hsl(0, 0%, 100%);
+  border: none;
+  height: 45px;
+  width: 100px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
 }/*# sourceMappingURL=mobiles.css.map */
