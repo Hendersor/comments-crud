@@ -92,7 +92,6 @@ body {
 // Styles for the comment component
 .commentContainer {
   padding: 12px;
-  // height: 248px;
   height: auto;
   border-radius: 5px;
   background-color: globals.$white;
@@ -156,7 +155,7 @@ body {
         }
       }
 
-      .commentContainer__comment__modify__edit {
+      .commentContainer__comment__modify__reply {
         width: 70px;
         display: flex;
         justify-content: space-between;
@@ -248,7 +247,7 @@ body {
         }
       }
 
-      .commentReplyContainer__comment__modify__edit {
+      .commentReplyContainer__comment__modify__reply {
         width: 70px;
         display: flex;
         justify-content: space-between;

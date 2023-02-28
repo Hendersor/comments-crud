@@ -24,4 +24,8 @@
 .create-comment .create-comment__extrasContainer {
   width: auto;
   height: auto;
+}
+
+.commentContainer .commentContainer__comment .desktopInv {
+  display: none;
 }/*# sourceMappingURL=desktop.css.map */
