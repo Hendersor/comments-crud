@@ -278,6 +278,119 @@ function createReply(content, username, time, votes) {
   body.appendChild(commentReplyContainer);
 }
 
+function yourComment() {
+  const yourCommentContainer = document.createElement("div");
+  yourCommentContainer.setAttribute("class", "yourCommentContainer");
+
+  const yourCommentContainer__info = document.createElement("div");
+  const yourCommentContainer__info__name = document.createElement("div");
+  const figure = document.createElement("figure");
+  const h2 = document.createElement("h2");
+  const span = document.createElement("span");
+  const p = document.createElement("p");
+
+  yourCommentContainer__info__name.appendChild(figure);
+  yourCommentContainer__info__name.appendChild(h2);
+  yourCommentContainer__info__name.appendChild(span);
+  yourCommentContainer__info__name.appendChild(p);
+
+  yourCommentContainer__info.appendChild(yourCommentContainer__info__name);
+  yourCommentContainer.appendChild(yourCommentContainer__info);
+
+  const commentContainer__comment = document.createElement("div");
+  commentContainer__comment.setAttribute("class", "commentContainer__comment");
+  const pComment = document.createElement("p");
+  commentContainer__comment.appendChild(pComment);
+
+  const commentContainer__comment__modify = document.createElement("div");
+  commentContainer__comment__modify.setAttribute(
+    "class",
+    "commentContainer__comment__modify"
+  );
+  const commentContainer__comment__modify__votes =
+    document.createElement("div");
+  commentContainer__comment__modify__votes.setAttribute(
+    "class",
+    "commentContainer__comment__modify__votes"
+  );
+  const imgPlus = document.createElement("img");
+  img.setAttribute(
+    "src",
+    "https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521532/interactive-comments-section-main/images/icon-plus_hgbuxm.svg"
+  );
+  img.setAttribute("alt", "plus icon");
+  const h1 = document.createElement("h1");
+  const imgMinus = document.createElement("img");
+  imgMinus.setAttribute(
+    "src",
+    "https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521530/interactive-comments-section-main/images/icon-minus_lkzi7d.svg"
+  );
+
+  commentContainer__comment__modify__votes.appendChild(imgPlus);
+  commentContainer__comment__modify__votes.appendChild(h1);
+  commentContainer__comment__modify__votes.appendChild(imgMinus);
+
+  commentContainer__comment__modify.appendChild(
+    commentContainer__comment__modify__votes
+  );
+
+  const commentContainer__comment__modify__container =
+    document.createElement("div");
+  commentContainer__comment__modify__container.setAttribute(
+    "class",
+    "commentContainer__comment__modify__container"
+  );
+
+  const modifier_container = document.createElement("div");
+  modifier_container.setAttribute("class", "modifier_container");
+
+  const figureIcon = document.createElement("figure");
+  const imgDel = document.createElement("img");
+  imgDel.setAttribute(
+    "src",
+    "https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521530/interactive-comments-section-main/images/icon-delete_opxwow.svg"
+  );
+  imgDel.setAttribute("alt", "delete icon");
+  figureIcon.appendChild(imgDel);
+
+  const pText = document.createElement("p");
+  pText.setAttribute("class", "delete");
+  pText.innerText("Delete");
+
+  modifier_container.appendChild(figureIcon);
+  modifier_container.appendChild(pText);
+
+  const modifier_containerV2 = document.createElement("div");
+  modifier_containerV2.setAttribute("class", "modifier_container");
+
+  const figureV2 = document.createElement("figure");
+  const imgIcon3 = document.createElement("img");
+  imgIcon3.setAttribute(
+    "src",
+    "https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521530/interactive-comments-section-main/images/icon-edit_ofjwji.svg"
+  );
+  imgIcon3.setAttribute("alt", "edit icon");
+  figureV2.appendChild(imgIcon3);
+
+  const pTextV2 = document.createElement("p");
+  pTextV2.setAttribute("class", "edit");
+  pTextV2.innerText = "Edit";
+
+  modifier_containerV2.appendChild(figureV2);
+  modifier_containerV2.appendChild(pTextV2);
+
+  commentContainer__comment__modify__container.appendChild(
+    modifier_containerV2
+  );
+  commentContainer__comment__modify.appendChild(
+    commentContainer__comment__modify__container
+  );
+  commentContainer__comment.appendChild(commentContainer__comment__modify);
+  yourCommentContainer.appendChild(commentContainer__comment);
+
+  body.appendChild(yourCommentContainer);
+}
+
 data.comments.forEach((n) => {
   if (n.replies.length > 0) {
     createComment(n.user.username, n.createdAt, n.content, n.score);
