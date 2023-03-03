@@ -170,9 +170,124 @@ function createComment(userName, time, comment, votes) {
   body.appendChild(commentContainer);
 }
 
+function createReply(content, username, time, votes) {
+  const commentReplyContainer = document.createElement("div");
+  commentReplyContainer.setAttribute("class", "commentReplyContainer");
+
+  const commentReplyContainer__info = document.createElement("div");
+  commentReplyContainer__info.setAttribute(
+    "class",
+    "commentReplyContainer__info"
+  );
+
+  const commentReplyContainer__info__name = document.createElement("div");
+  commentReplyContainer__info__name.setAttribute(
+    "class",
+    "commentReplyContainer__info__name "
+  );
+
+  const figure = document.createElement("figure");
+  const h2 = document.createElement("h2");
+  h2.innerText = username;
+  const p = document.createElement("p");
+  p.innerText = time;
+
+  commentReplyContainer__info__name.appendChild(figure);
+  commentReplyContainer__info__name.appendChild(h2);
+  commentReplyContainer__info__name.appendChild(p);
+
+  commentReplyContainer__info.appendChild(commentReplyContainer__info__name);
+  commentReplyContainer.appendChild(commentReplyContainer__info);
+  // Second part of the container/
+
+  const commentReplyContainer__comment = document.createElement("div");
+  commentReplyContainer__comment.setAttribute(
+    "class",
+    "commentReplyContainer__comment"
+  );
+
+  const Pcomment = document.createElement("p");
+  Pcomment.innerText = content;
+  commentReplyContainer__comment.appendChild(Pcomment);
+
+  const commentReplyContainer__comment__modify = document.createElement("div");
+  commentReplyContainer__comment__modify.setAttribute(
+    "class",
+    "commentReplyContainer__comment__modify"
+  );
+  const commentReplyContainer__comment__modify__votes =
+    document.createElement("div");
+  commentReplyContainer__comment__modify__votes.setAttribute(
+    "class",
+    "commentReplyContainer__comment__modify__votes"
+  );
+
+  const imgIcon1 = document.createElement("img");
+  imgIcon1.setAttribute(
+    "src",
+    "https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521532/interactive-comments-section-main/images/icon-plus_hgbuxm.svg"
+  );
+  imgIcon1.setAttribute("alt", "plus icon");
+
+  const h1 = document.createElement("h1");
+  h1.innerText = votes;
+
+  const imgIcon2 = document.createElement("img");
+  imgIcon2.setAttribute(
+    "src",
+    "https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521530/interactive-comments-section-main/images/icon-minus_lkzi7d.svg"
+  );
+  imgIcon2.setAttribute("alt", "minus icon");
+
+  commentReplyContainer__comment__modify__votes.appendChild(imgIcon1);
+  commentReplyContainer__comment__modify__votes.appendChild(h1);
+  commentReplyContainer__comment__modify__votes.appendChild(imgIcon2);
+
+  commentReplyContainer__comment__modify.appendChild(
+    commentReplyContainer__comment__modify__votes
+  );
+
+  const commentReplyContainer__comment__modify__reply =
+    document.createElement("div");
+  commentReplyContainer__comment__modify__reply.setAttribute(
+    "class",
+    "commentReplyContainer__comment__modify__reply"
+  );
+
+  const imgReply = document.createElement("img");
+  imgReply.setAttribute(
+    "src",
+    "https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521529/interactive-comments-section-main/images/icon-reply_xmi2ag.svg"
+  );
+  imgReply.setAttribute("alt", "edit icon");
+
+  const h2Reply = document.createElement("h2");
+  h2Reply.innerText = "Reply";
+  commentReplyContainer__comment__modify__reply.appendChild(imgReply);
+  commentReplyContainer__comment__modify__reply.appendChild(h2Reply);
+
+  commentReplyContainer__comment__modify.appendChild(
+    commentReplyContainer__comment__modify__reply
+  );
+  commentReplyContainer__comment.appendChild(
+    commentReplyContainer__comment__modify
+  );
+
+  commentReplyContainer.appendChild(commentReplyContainer__comment);
+
+  body.appendChild(commentReplyContainer);
+}
+
 data.comments.forEach((n) => {
-  console.log(n);
-  createComment(n.user.username, n.createdAt, n.content, n.score);
+  if (n.replies.length > 0) {
+    createComment(n.user.username, n.createdAt, n.content, n.score);
+    n.replies.forEach((r) => {
+      console.log(r);
+      createReply(r.content, r.user.username, r.createdAt, r.score);
+    });
+  } else if (n.replies.length === 0) {
+    createComment(n.user.username, n.createdAt, n.content, n.score);
+  }
 });
 
 //1.Hay que hacer desplear las respuestas de los comentarios
