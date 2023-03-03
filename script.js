@@ -9,15 +9,16 @@ const data = {
   comments: [
     {
       id: 1,
-      content: "Prueba",
-      createdAt: "5 month ago",
+      content:
+        "Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.",
+      createdAt: "1 month ago",
       score: 12,
       user: {
         image: {
           png: "./images/avatars/image-amyrobson.png",
           webp: "./images/avatars/image-amyrobson.webp",
         },
-        username: "hendersor",
+        username: "amyrobson",
       },
       replies: [],
     },
@@ -70,16 +71,20 @@ const data = {
   ],
 };
 
+// DOM manipulation to creating the comment container
 function createComment(userName, time, comment, votes) {
   // First part of the comment
   const commentContainer = document.createElement("div");
-  commentContainer.classList.add = "commentContainer";
+  commentContainer.setAttribute("class", "commentContainer");
 
   const commentContainer__info = document.createElement("div");
-  commentContainer__info.classList.add = "commentContainer__info";
+  commentContainer__info.setAttribute("class", "commentContainer__info");
 
   const commentContainer__info__name = document.createElement("div");
-  commentContainer__info__name.classList.add = "commentContainer__info__name";
+  commentContainer__info__name.setAttribute(
+    "class",
+    "commentContainer__info__name"
+  );
 
   const figure = document.createElement("figure");
   const h2 = document.createElement("h2");
@@ -96,20 +101,22 @@ function createComment(userName, time, comment, votes) {
 
   //Second part of the container
   const commentContainer__comment = document.createElement("div");
-  commentContainer__comment.classList.add("commentContainer__comment");
+  commentContainer__comment.setAttribute("class", "commentContainer__comment");
 
   const pComment = document.createElement("p");
   pComment.innerText = comment;
   commentContainer__comment.appendChild(pComment);
 
   const commentContainer__comment__modify = document.createElement("div");
-  commentContainer__comment__modify.classList.add(
+  commentContainer__comment__modify.setAttribute(
+    "class",
     "commentContainer__comment__modify"
   );
 
   const commentContainer__comment__modify__votes =
     document.createElement("div");
-  commentContainer__comment__modify.classList.add(
+  commentContainer__comment__modify__votes.setAttribute(
+    "class",
     "commentContainer__comment__modify__votes"
   );
 
@@ -139,7 +146,8 @@ function createComment(userName, time, comment, votes) {
 
   const commentContainer__comment__modify__reply =
     document.createElement("div");
-  commentContainer__comment__modify__reply.classList.add(
+  commentContainer__comment__modify__reply.setAttribute(
+    "class",
     "commentContainer__comment__modify__reply"
   );
 
@@ -157,8 +165,12 @@ function createComment(userName, time, comment, votes) {
   commentContainer__comment__modify.appendChild(
     commentContainer__comment__modify__reply
   );
+  commentContainer__comment.appendChild(commentContainer__comment__modify);
+  commentContainer.appendChild(commentContainer__comment);
+  body.appendChild(commentContainer);
 }
 
 data.comments.forEach((n) => {
   console.log(n);
+  createComment(n.user.username, n.createdAt, n.content, n.score);
 });
