@@ -174,3 +174,7 @@ data.comments.forEach((n) => {
   console.log(n);
   createComment(n.user.username, n.createdAt, n.content, n.score);
 });
+
+//1.Hay que hacer desplear las respuestas de los comentarios
+//2.Cada que se use el boton para enviar el comentario
+//  registralo en la data para despues desplegarlo.
