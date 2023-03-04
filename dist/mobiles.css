@@ -9,9 +9,17 @@ body {
   margin: 20px 15px;
   height: auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: space-evenly;
   align-items: center;
+}
+
+.allCommentsContainer {
+  width: 100%;
+  height: auto;
+  background-color: hsl(228, 33%, 97%);
+  display: flex;
+  flex-direction: column;
 }
 
 .create-comment,
@@ -269,7 +277,7 @@ body {
 .yourCommentContainer .yourCommentContainer__info .yourCommentContainer__info__name figure {
   width: 50px;
   height: 50px;
-  background-image: url("https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521532/interactive-comments-section-main/images/avatars/image-amyrobson_busbm4.png");
+  background-image: url("https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521531/interactive-comments-section-main/images/avatars/image-juliusomo_zyjpmi.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

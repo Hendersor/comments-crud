@@ -71,6 +71,8 @@ const data = {
   ],
 };
 
+const allCommentsContainer = document.querySelector(".allCommentsContainer");
+
 // DOM manipulation to creating the comment container
 function createComment(userName, time, comment, votes) {
   // First part of the comment
@@ -167,7 +169,8 @@ function createComment(userName, time, comment, votes) {
   );
   commentContainer__comment.appendChild(commentContainer__comment__modify);
   commentContainer.appendChild(commentContainer__comment);
-  body.appendChild(commentContainer);
+  allCommentsContainer.appendChild(commentContainer);
+  body.appendChild(allCommentsContainer);
 }
 
 function createReply(content, username, time, votes) {
@@ -274,20 +277,32 @@ function createReply(content, username, time, votes) {
   );
 
   commentReplyContainer.appendChild(commentReplyContainer__comment);
-
-  body.appendChild(commentReplyContainer);
+  allCommentsContainer.appendChild(commentReplyContainer);
+  body.appendChild(allCommentsContainer);
 }
 
-function yourComment() {
+function yourComment(id, content, createdAt, score, user) {
   const yourCommentContainer = document.createElement("div");
   yourCommentContainer.setAttribute("class", "yourCommentContainer");
+  yourCommentContainer.setAttribute("id", id);
 
   const yourCommentContainer__info = document.createElement("div");
+  yourCommentContainer__info.setAttribute(
+    "class",
+    "yourCommentContainer__info"
+  );
   const yourCommentContainer__info__name = document.createElement("div");
+  yourCommentContainer__info__name.setAttribute(
+    "class",
+    "yourCommentContainer__info__name"
+  );
   const figure = document.createElement("figure");
   const h2 = document.createElement("h2");
+  h2.innerText = user;
   const span = document.createElement("span");
+  span.innerText = "you";
   const p = document.createElement("p");
+  p.innerText = createdAt;
 
   yourCommentContainer__info__name.appendChild(figure);
   yourCommentContainer__info__name.appendChild(h2);
@@ -301,6 +316,7 @@ function yourComment() {
   commentContainer__comment.setAttribute("class", "commentContainer__comment");
   const pComment = document.createElement("p");
   commentContainer__comment.appendChild(pComment);
+  pComment.innerText = content;
 
   const commentContainer__comment__modify = document.createElement("div");
   commentContainer__comment__modify.setAttribute(
@@ -314,12 +330,13 @@ function yourComment() {
     "commentContainer__comment__modify__votes"
   );
   const imgPlus = document.createElement("img");
-  img.setAttribute(
+  imgPlus.setAttribute(
     "src",
     "https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521532/interactive-comments-section-main/images/icon-plus_hgbuxm.svg"
   );
-  img.setAttribute("alt", "plus icon");
+  imgPlus.setAttribute("alt", "plus icon");
   const h1 = document.createElement("h1");
+  h1.innerText = score;
   const imgMinus = document.createElement("img");
   imgMinus.setAttribute(
     "src",
@@ -355,10 +372,12 @@ function yourComment() {
 
   const pText = document.createElement("p");
   pText.setAttribute("class", "delete");
-  pText.innerText("Delete");
+  pText.innerText = "Delete";
 
   modifier_container.appendChild(figureIcon);
   modifier_container.appendChild(pText);
+
+  commentContainer__comment__modify__container.appendChild(modifier_container);
 
   const modifier_containerV2 = document.createElement("div");
   modifier_containerV2.setAttribute("class", "modifier_container");
@@ -387,22 +406,55 @@ function yourComment() {
   );
   commentContainer__comment.appendChild(commentContainer__comment__modify);
   yourCommentContainer.appendChild(commentContainer__comment);
-
-  body.appendChild(yourCommentContainer);
+  allCommentsContainer.appendChild(yourCommentContainer);
+  body.appendChild(allCommentsContainer);
 }
 
-data.comments.forEach((n) => {
-  if (n.replies.length > 0) {
-    createComment(n.user.username, n.createdAt, n.content, n.score);
-    n.replies.forEach((r) => {
-      console.log(r);
-      createReply(r.content, r.user.username, r.createdAt, r.score);
-    });
-  } else if (n.replies.length === 0) {
-    createComment(n.user.username, n.createdAt, n.content, n.score);
-  }
-});
+//Creating the new object inside de data
 
-//1.Hay que hacer desplear las respuestas de los comentarios
-//2.Cada que se use el boton para enviar el comentario
-//  registralo en la data para despues desplegarlo.
+function creatingData(comment) {
+  const newData = {
+    id: Math.floor(Math.random() * 100),
+    content: comment,
+    createdAt: "2 days ago",
+    score: 0,
+    user: {
+      image: {
+        png: "./images/avatars/image-juliusomo.png",
+        webp: "./images/avatars/image-juliusomo.webp",
+      },
+      username: "juliusomo",
+    },
+    replies: [],
+  };
+  data.comments.push(newData);
+}
+
+/// Deploy the replies and comments
+function deployAllComments() {
+  allCommentsContainer.innerHTML = "";
+  data.comments.forEach((n) => {
+    if (n.replies.length > 0) {
+      createComment(n.user.username, n.createdAt, n.content, n.score);
+      n.replies.forEach((r) => {
+        createReply(r.content, r.user.username, r.createdAt, r.score);
+      });
+    } else if (n.replies.length === 0) {
+      createComment(n.user.username, n.createdAt, n.content, n.score);
+    }
+  });
+}
+deployAllComments();
+
+const sendButton = document.querySelector(".interactionButton");
+const textArea = document.querySelector(".create-comment__textArea");
+
+sendButton.addEventListener("click", () => {
+  let comment;
+  if (textArea.value !== "") {
+    comment = textArea.value;
+  }
+  creatingData(comment);
+  deployAllComments();
+  textArea.value = "";
+});
