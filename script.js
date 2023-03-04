@@ -411,7 +411,6 @@ function yourComment(id, content, createdAt, score, user) {
 }
 
 //Creating the new object inside de data
-
 function creatingData(comment) {
   const newData = {
     id: Math.floor(Math.random() * 100),
@@ -440,7 +439,10 @@ function deployAllComments() {
         createReply(r.content, r.user.username, r.createdAt, r.score);
       });
     } else if (n.replies.length === 0) {
-      createComment(n.user.username, n.createdAt, n.content, n.score);
+      if (n.replies.length === 0 && n.user.username === "juliusomo") {
+        yourComment(n.id, n.content, n.createdAt, n.score, n.user.username);
+      } else if (n.replies.length === 0 && n.user.username !== "juliusomo")
+        createComment(n.user.username, n.createdAt, n.content, n.score);
     }
   });
 }
