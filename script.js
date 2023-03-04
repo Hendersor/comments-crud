@@ -72,7 +72,8 @@ const data = {
 };
 
 const allCommentsContainer = document.querySelector(".allCommentsContainer");
-
+let deleteBtn = [];
+let idBtn;
 // DOM manipulation to creating the comment container
 function createComment(userName, time, comment, votes) {
   // First part of the comment
@@ -360,6 +361,7 @@ function yourComment(id, content, createdAt, score, user) {
 
   const modifier_container = document.createElement("div");
   modifier_container.setAttribute("class", "modifier_container");
+  modifier_container.setAttribute("id", idBtn);
 
   const figureIcon = document.createElement("figure");
   const imgDel = document.createElement("img");
@@ -376,6 +378,7 @@ function yourComment(id, content, createdAt, score, user) {
 
   modifier_container.appendChild(figureIcon);
   modifier_container.appendChild(pText);
+  deleteBtn.push(modifier_container);
 
   commentContainer__comment__modify__container.appendChild(modifier_container);
 
@@ -427,6 +430,7 @@ function creatingData(comment) {
     replies: [],
   };
   data.comments.push(newData);
+  idBtn = newData.id;
 }
 
 /// Deploy the replies and comments
@@ -457,6 +461,18 @@ sendButton.addEventListener("click", () => {
     comment = textArea.value;
   }
   creatingData(comment);
+  console.log(deleteBtn);
+  deleteBtn.forEach((btn) => {
+    // idBtn = btn.parentNode.parentNode.parentNode.parentNode.id;
+    console.log(idBtn);
+    btn.addEventListener("click", deleteComment);
+  });
   deployAllComments();
+
+  deleteBtn = [];
   textArea.value = "";
 });
+
+function deleteComment(btn) {
+  console.log(btn);
+}
