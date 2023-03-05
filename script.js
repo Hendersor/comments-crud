@@ -148,7 +148,7 @@ function createComment(userName, time, comment, votes) {
   );
 
   const commentContainer__comment__modify__reply =
-    document.createElement("div");
+    document.createElement("button");
   commentContainer__comment__modify__reply.setAttribute(
     "class",
     "commentContainer__comment__modify__reply"
@@ -252,7 +252,7 @@ function createReply(content, username, time, votes) {
   );
 
   const commentReplyContainer__comment__modify__reply =
-    document.createElement("div");
+    document.createElement("button");
   commentReplyContainer__comment__modify__reply.setAttribute(
     "class",
     "commentReplyContainer__comment__modify__reply"
@@ -359,7 +359,7 @@ function yourComment(id, content, createdAt, score, user) {
     "commentContainer__comment__modify__container"
   );
 
-  const modifier_container = document.createElement("div");
+  const modifier_container = document.createElement("button");
   modifier_container.setAttribute("class", "modifier_container");
   modifier_container.setAttribute("id", idBtn);
 
@@ -382,7 +382,7 @@ function yourComment(id, content, createdAt, score, user) {
 
   commentContainer__comment__modify__container.appendChild(modifier_container);
 
-  const modifier_containerV2 = document.createElement("div");
+  const modifier_containerV2 = document.createElement("button");
   modifier_containerV2.setAttribute("class", "modifier_container");
 
   const figureV2 = document.createElement("figure");
@@ -461,13 +461,13 @@ sendButton.addEventListener("click", () => {
     comment = textArea.value;
   }
   creatingData(comment);
-  console.log(deleteBtn);
-  deleteBtn.forEach((btn) => {
-    // idBtn = btn.parentNode.parentNode.parentNode.parentNode.id;
-    console.log(idBtn);
-    btn.addEventListener("click", deleteComment);
-  });
   deployAllComments();
+
+  deleteBtn.forEach((btn) => {
+    btn.addEventListener("click", (btn) => {
+      console.log(btn.srcElement);
+    });
+  });
 
   deleteBtn = [];
   textArea.value = "";

@@ -154,7 +154,7 @@ body {
   cursor: pointer;
 }
 .commentContainer .commentContainer__comment .commentContainer__comment__modify .commentContainer__comment__modify__reply {
-  width: 70px;
+  width: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -162,6 +162,8 @@ body {
   font-weight: 700;
   font-size: 0.6rem;
   cursor: pointer;
+  border: none;
+  background-color: transparent;
 }
 .commentContainer .commentContainer__comment .commentContainer__comment__modify .commentContainer__comment__modify__reply img {
   height: 16px;
@@ -236,14 +238,16 @@ body {
   cursor: pointer;
 }
 .commentReplyContainer .commentReplyContainer__comment .commentReplyContainer__comment__modify .commentReplyContainer__comment__modify__reply {
-  width: 70px;
+  width: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: hsl(238, 40%, 52%);
   font-weight: 700;
   font-size: 0.6rem;
+  border: none;
   cursor: pointer;
+  background-color: transparent;
 }
 .commentReplyContainer .commentReplyContainer__comment .commentReplyContainer__comment__modify .commentReplyContainer__comment__modify__reply img {
   height: 16px;
@@ -334,6 +338,10 @@ body {
   align-items: center;
   height: 40px;
   cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-size: 1rem;
+  font-weight: 700;
 }
 .yourCommentContainer .commentContainer__comment .commentContainer__comment__modify .commentContainer__comment__modify__container .modifier_container figure {
   height: 30px;
