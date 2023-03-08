@@ -73,7 +73,6 @@ const data = {
 
 const allCommentsContainer = document.querySelector(".allCommentsContainer");
 let deleteBtn = [];
-let idBtn;
 // DOM manipulation to creating the comment container
 function createComment(userName, time, comment, votes) {
   // First part of the comment
@@ -361,7 +360,7 @@ function yourComment(id, content, createdAt, score, user) {
 
   const modifier_container = document.createElement("button");
   modifier_container.setAttribute("class", "modifier_container");
-  modifier_container.setAttribute("id", idBtn);
+  modifier_container.setAttribute("id", id);
 
   const figureIcon = document.createElement("figure");
   const imgDel = document.createElement("img");
@@ -430,7 +429,6 @@ function creatingData(comment) {
     replies: [],
   };
   data.comments.push(newData);
-  idBtn = newData.id;
 }
 
 /// Deploy the replies and comments
@@ -464,15 +462,11 @@ sendButton.addEventListener("click", () => {
   deployAllComments();
 
   deleteBtn.forEach((btn) => {
-    btn.addEventListener("click", (btn) => {
-      console.log(btn.srcElement);
+    btn.addEventListener("click", () => {
+      console.log(btn.id);
     });
   });
 
   deleteBtn = [];
   textArea.value = "";
 });
-
-function deleteComment(btn) {
-  console.log(btn);
-}
