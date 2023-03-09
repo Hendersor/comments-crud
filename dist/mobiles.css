@@ -307,6 +307,22 @@ body {
   font-weight: 400;
   line-height: 25px;
 }
+.yourCommentContainer .commentContainer__comment .create-comment__textArea {
+  height: 60%;
+  width: 90%;
+  border-radius: 5px;
+  font-size: 1rem;
+  text-align: justify;
+  border: 1px solid hsl(0, 0%, 90%);
+  outline: none;
+  resize: none;
+  font-family: "Rubik", sans-serif;
+  padding: 8px 15px;
+  margin: 10px 0px;
+}
+.yourCommentContainer .commentContainer__comment .notVisible {
+  display: none;
+}
 .yourCommentContainer .commentContainer__comment .commentContainer__comment__modify {
   display: flex;
   justify-content: space-between;
@@ -364,4 +380,18 @@ body {
 .yourCommentContainer .commentContainer__comment .commentContainer__comment__modify .commentContainer__comment__modify__container .modifier_container p {
   font-size: 1rem;
   font-weight: 500;
+}
+.yourCommentContainer .commentContainer__comment .commentContainer__comment__modify .notVisible {
+  display: none;
+}
+.yourCommentContainer .commentContainer__comment .commentContainer__comment__modify .interactionButton {
+  background-color: hsl(238, 40%, 52%);
+  font-weight: 700;
+  color: hsl(0, 0%, 100%);
+  border: none;
+  height: 45px;
+  width: 100px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
 }/*# sourceMappingURL=mobiles.css.map */

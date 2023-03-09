@@ -359,7 +359,7 @@ function yourComment(id, content, createdAt, score, user) {
 
   const modifier_container = document.createElement("button");
   modifier_container.setAttribute("class", "modifier_container");
-  modifier_container.setAttribute("id", id);
+  modifier_container.classList.add(id);
 
   const figureIcon = document.createElement("figure");
   const imgDel = document.createElement("img");
@@ -381,6 +381,7 @@ function yourComment(id, content, createdAt, score, user) {
 
   const modifier_containerV2 = document.createElement("button");
   modifier_containerV2.setAttribute("class", "modifier_container");
+  modifier_containerV2.classList.add(id);
 
   const figureV2 = document.createElement("figure");
   const imgIcon3 = document.createElement("img");
@@ -410,6 +411,12 @@ function yourComment(id, content, createdAt, score, user) {
   body.appendChild(allCommentsContainer);
 
   deleteComment(modifier_container, id);
+  editComment(
+    modifier_containerV2,
+    pComment,
+    commentContainer__comment,
+    commentContainer__comment__modify
+  );
 }
 
 //Creating the new object inside de data
@@ -451,9 +458,10 @@ function deployAllComments() {
 deployAllComments();
 
 const sendButton = document.querySelector(".interactionButton");
-const textArea = document.querySelector(".create-comment__textArea");
 
 sendButton.addEventListener("click", () => {
+  const textArea = document.querySelector(".create-comment__textArea");
+
   let comment;
   if (textArea.value !== "") {
     comment = textArea.value;
@@ -464,14 +472,44 @@ sendButton.addEventListener("click", () => {
   textArea.value = "";
 });
 
+//Function to delete your comment
 function deleteComment(button, id) {
   button.addEventListener("click", () => {
-    let id = parseInt(button.id);
+    const id = parseInt(button.classList.value.split(" ")[1]);
     const index = data.comments.findIndex((obj) => {
       return obj.id === id;
     });
 
     data.comments.splice(index, 1);
     deployAllComments();
+  });
+}
+//Function to edit your comment
+function editComment(button, text, parent, parentContainer) {
+  button.addEventListener("click", () => {
+    const id = parseInt(button.classList.value.split(" ")[1]);
+    const comment = data.comments.filter((c) => c.id === id);
+    const commentFilter = comment[0].content;
+
+    const textArea = document.createElement("textarea");
+    textArea.setAttribute("class", "create-comment__textArea");
+    textArea.innerText = commentFilter;
+    parent.replaceChild(textArea, text);
+
+    const btns = parent.querySelector(
+      ".commentContainer__comment__modify__container"
+    );
+    btns.classList.toggle("notVisible");
+    const btn = document.createElement("button");
+    btn.innerText = "UPDATE";
+    btn.setAttribute("class", "interactionButton");
+    parentContainer.appendChild(btn);
+
+    btn.addEventListener("click", () => {
+      const newComment = textArea.value;
+      comment[0].content = newComment;
+      parent.innerHTML = "";
+      deployAllComments();
+    });
   });
 }
