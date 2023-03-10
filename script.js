@@ -466,25 +466,43 @@ sendButton.addEventListener("click", () => {
   let comment;
   if (textArea.value !== "") {
     comment = textArea.value;
+    creatingData(comment);
+    deployAllComments();
   }
-  creatingData(comment);
-  deployAllComments();
 
   textArea.value = "";
 });
 
 //Function to delete your comment
 function deleteComment(button, id) {
+  const modal = document.querySelector(".modal");
+  const closeModal = document.querySelector(".btnContainer .no");
+  const deleteTheComment = document.querySelector(".btnContainer .yes");
+
   button.addEventListener("click", () => {
+    const body = document.querySelector("body");
+    // body.style.overflow = "hidden";
+    modal.showModal();
+  });
+
+  closeModal.addEventListener("click", () => {
+    // body.style.overflow = "auto";
+    modal.close();
+  });
+  deleteTheComment.addEventListener("click", () => {
     const id = parseInt(button.classList.value.split(" ")[1]);
     const index = data.comments.findIndex((obj) => {
       return obj.id === id;
     });
 
     data.comments.splice(index, 1);
+    console.log(data);
     deployAllComments();
+    modal.close();
+    // body.style.overflow = "auto";
   });
 }
+
 //Function to edit your comment
 function editComment(button, text, parent, parentContainer) {
   button.addEventListener("click", () => {
@@ -521,8 +539,14 @@ const replyBtns = document.querySelectorAll(
 replyBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     const id = parseInt(btn.classList.value.split(" ")[1]);
-    console.log(data);
     const comment = data.comments.filter((n) => n.id === id);
-    console.log(comment);
+    // Crear un contenedor para agregar el comentario.
+    // El boton para agregar el comentarion se hara por medio de un push a la seccion de respuestas del propio comentario.
+    // Al final se vuelve a ejecutar la funcion que crea todos los comentarios para crear la propia respuesta.
+
+    // Extras
+    // Crear el modal pora eliminar algun comentario
+    // Deshabilitar el boton si el text area esta vacio
+    // Agregar el nombre del usuario al que le estamos respondiendo dentro del text area.
   });
 });

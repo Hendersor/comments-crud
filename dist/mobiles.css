@@ -14,6 +14,65 @@ body {
   align-items: center;
 }
 
+.modal {
+  width: 75%;
+  height: 210px;
+  border-radius: 5px;
+  padding: 0px 20px;
+  border: none;
+}
+.modal .modalContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.modal .modalContainer .textContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 60%;
+}
+.modal .modalContainer .textContainer h1 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: hsl(212, 24%, 26%);
+  margin: 0;
+}
+.modal .modalContainer .textContainer p {
+  font-size: 1rem;
+  color: hsl(211, 10%, 45%);
+  line-height: 25px;
+  margin: 0;
+}
+.modal .modalContainer .btnContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.modal .modalContainer .btnContainer .button {
+  background-color: hsl(238, 40%, 52%);
+  font-weight: 700;
+  color: hsl(0, 0%, 100%);
+  border: none;
+  height: 50px;
+  width: 140px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.modal .modalContainer .btnContainer .yes {
+  background-color: hsl(358, 79%, 66%);
+}
+.modal .modalContainer .btnContainer .no {
+  background-color: hsl(211, 10%, 45%);
+}
+
+.modal::backdrop {
+  background: hsl(211, 10%, 45%);
+  opacity: 0.2;
+}
+
 .allCommentsContainer {
   width: 100%;
   height: auto;
