@@ -73,7 +73,7 @@ const data = {
 
 const allCommentsContainer = document.querySelector(".allCommentsContainer");
 // DOM manipulation to creating the comment container
-function createComment(userName, time, comment, votes) {
+function createComment(id, userName, time, comment, votes) {
   // First part of the comment
   const commentContainer = document.createElement("div");
   commentContainer.setAttribute("class", "commentContainer");
@@ -151,6 +151,7 @@ function createComment(userName, time, comment, votes) {
     "class",
     "commentContainer__comment__modify__reply"
   );
+  commentContainer__comment__modify__reply.classList.add(id);
 
   const replyIcon = document.createElement("img");
   replyIcon.setAttribute(
@@ -443,7 +444,7 @@ function deployAllComments() {
   allCommentsContainer.innerHTML = "";
   data.comments.forEach((n) => {
     if (n.replies.length > 0) {
-      createComment(n.user.username, n.createdAt, n.content, n.score);
+      createComment(n.id, n.user.username, n.createdAt, n.content, n.score);
       n.replies.forEach((r) => {
         createReply(r.content, r.user.username, r.createdAt, r.score);
       });
@@ -451,7 +452,7 @@ function deployAllComments() {
       if (n.replies.length === 0 && n.user.username === "juliusomo") {
         yourComment(n.id, n.content, n.createdAt, n.score, n.user.username);
       } else if (n.replies.length === 0 && n.user.username !== "juliusomo")
-        createComment(n.user.username, n.createdAt, n.content, n.score);
+        createComment(n.id, n.user.username, n.createdAt, n.content, n.score);
     }
   });
 }
@@ -513,3 +514,15 @@ function editComment(button, text, parent, parentContainer) {
     });
   });
 }
+
+const replyBtns = document.querySelectorAll(
+  ".commentContainer__comment__modify__reply"
+);
+replyBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const id = parseInt(btn.classList.value.split(" ")[1]);
+    console.log(data);
+    const comment = data.comments.filter((n) => n.id === id);
+    console.log(comment);
+  });
+});
