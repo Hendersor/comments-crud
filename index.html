@@ -25,7 +25,6 @@
     <title>Document</title>
   </head>
   <body id="body">
-    <section class="allCommentsContainer"></section>
     <!-- <div class="commentContainer">
       <div class="commentContainer__info">
         <div class="commentContainer__info__name">
@@ -166,42 +165,46 @@
       </div>
     </div>-->
 
-    <dialog class="modal">
-      <div class="modalContainer">
-        <div class="textContainer">
-          <h1>Delete comment</h1>
-          <p>
-            Are you sure you want to delete this comment? This will remove the
-            comment and can't be undone.
-          </p>
+    <main class="mainContainer">
+      <section class="allCommentsContainer"></section>
+
+      <dialog class="modal">
+        <div class="modalContainer">
+          <div class="textContainer">
+            <h1>Delete comment</h1>
+            <p>
+              Are you sure you want to delete this comment? This will remove the
+              comment and can't be undone.
+            </p>
+          </div>
+
+          <div class="btnContainer">
+            <button class="button no">NO, CANCEL</button>
+            <button class="button yes">YES, DELETE</button>
+          </div>
         </div>
+      </dialog>
 
-        <div class="btnContainer">
-          <button class="button no">NO, CANCEL</button>
-          <button class="button yes">YES, DELETE</button>
+      <section id="createComment" class="create-comment">
+        <figure class="create-comment__img-Container notVisible desktopVisible">
+          <img src="" alt="" />
+        </figure>
+        <textarea
+          class="create-comment__textArea"
+          name=""
+          id="textArea"
+          cols="30"
+          rows="10"
+          placeholder="Add a comment..."
+          maxlength="176"
+        ></textarea>
+
+        <div class="create-comment__extrasContainer">
+          <figure class="create-comment__img-Container desktopInv"></figure>
+          <button class="interactionButton">SEND</button>
         </div>
-      </div>
-    </dialog>
-
-    <section id="createComment" class="create-comment">
-      <figure class="create-comment__img-Container notVisible desktopVisible">
-        <img src="" alt="" />
-      </figure>
-      <textarea
-        class="create-comment__textArea"
-        name=""
-        id="textArea"
-        cols="30"
-        rows="10"
-        placeholder="Add a comment..."
-        maxlength="176"
-      ></textarea>
-
-      <div class="create-comment__extrasContainer">
-        <figure class="create-comment__img-Container desktopInv"></figure>
-        <button class="interactionButton">SEND</button>
-      </div>
-    </section>
+      </section>
+    </main>
     <script src="/script.js"></script>
   </body>
 </html>

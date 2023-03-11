@@ -70,7 +70,7 @@ const data = {
     },
   ],
 };
-
+const mainContainer = document.querySelector(".mainContainer");
 const allCommentsContainer = document.querySelector(".allCommentsContainer");
 // DOM manipulation to creating the comment container
 function createComment(id, userName, time, comment, votes) {
@@ -170,7 +170,9 @@ function createComment(id, userName, time, comment, votes) {
   commentContainer__comment.appendChild(commentContainer__comment__modify);
   commentContainer.appendChild(commentContainer__comment);
   allCommentsContainer.appendChild(commentContainer);
-  body.appendChild(allCommentsContainer);
+  mainContainer.appendChild(allCommentsContainer);
+
+  body.appendChild(mainContainer);
 }
 
 function createReply(content, username, time, votes) {
@@ -278,7 +280,8 @@ function createReply(content, username, time, votes) {
 
   commentReplyContainer.appendChild(commentReplyContainer__comment);
   allCommentsContainer.appendChild(commentReplyContainer);
-  body.appendChild(allCommentsContainer);
+  mainContainer.appendChild(allCommentsContainer);
+  body.appendChild(mainContainer);
 }
 
 function yourComment(id, content, createdAt, score, user) {
@@ -409,7 +412,8 @@ function yourComment(id, content, createdAt, score, user) {
   commentContainer__comment.appendChild(commentContainer__comment__modify);
   yourCommentContainer.appendChild(commentContainer__comment);
   allCommentsContainer.appendChild(yourCommentContainer);
-  body.appendChild(allCommentsContainer);
+  mainContainer.appendChild(allCommentsContainer);
+  body.appendChild(mainContainer);
 
   deleteComment(modifier_container, id);
   editComment(
@@ -481,25 +485,32 @@ function deleteComment(button, id) {
 
   button.addEventListener("click", () => {
     const body = document.querySelector("body");
-    // body.style.overflow = "hidden";
+    body.style.overflow = "hidden";
     modal.showModal();
+    console.log(data);
   });
 
   closeModal.addEventListener("click", () => {
-    // body.style.overflow = "auto";
+    body.style.overflow = "auto";
     modal.close();
   });
+
   deleteTheComment.addEventListener("click", () => {
     const id = parseInt(button.classList.value.split(" ")[1]);
-    const index = data.comments.findIndex((obj) => {
+    console.log(button.classList.value);
+    console.log(id);
+    let index = data.comments.findIndex((obj) => {
       return obj.id === id;
     });
 
+    console.log(index);
+
     data.comments.splice(index, 1);
-    console.log(data);
     deployAllComments();
     modal.close();
-    // body.style.overflow = "auto";
+
+    console.log(data);
+    body.style.overflow = "auto";
   });
 }
 
@@ -545,8 +556,7 @@ replyBtns.forEach((btn) => {
     // Al final se vuelve a ejecutar la funcion que crea todos los comentarios para crear la propia respuesta.
 
     // Extras
-    // Crear el modal pora eliminar algun comentario
-    // Deshabilitar el boton si el text area esta vacio
     // Agregar el nombre del usuario al que le estamos respondiendo dentro del text area.
+    // Arreglar el bug que se genera a la hora de eliminar un comentario.
   });
 });
