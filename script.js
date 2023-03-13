@@ -175,7 +175,7 @@ function createComment(id, userName, time, comment, votes) {
   body.appendChild(mainContainer);
 }
 
-function createReply(content, username, time, votes) {
+function createReply(id, content, username, time, votes) {
   const commentReplyContainer = document.createElement("div");
   commentReplyContainer.setAttribute("class", "commentReplyContainer");
 
@@ -258,6 +258,7 @@ function createReply(content, username, time, votes) {
     "class",
     "commentReplyContainer__comment__modify__reply"
   );
+  commentReplyContainer__comment__modify__reply.classList.add(id);
 
   const imgReply = document.createElement("img");
   imgReply.setAttribute(
@@ -285,6 +286,7 @@ function createReply(content, username, time, votes) {
 }
 
 function yourComment(id, content, createdAt, score, user) {
+  console.log(id);
   const yourCommentContainer = document.createElement("div");
   yourCommentContainer.setAttribute("class", "yourCommentContainer");
   yourCommentContainer.setAttribute("id", id);
@@ -446,22 +448,32 @@ function creatingData(comment) {
 /// Deploy the replies and comments
 function deployAllComments() {
   allCommentsContainer.innerHTML = "";
+  const yourComments = [];
+
   data.comments.forEach((n) => {
     if (n.replies.length > 0) {
       createComment(n.id, n.user.username, n.createdAt, n.content, n.score);
       n.replies.forEach((r) => {
-        createReply(r.content, r.user.username, r.createdAt, r.score);
+        createReply(r.id, r.content, r.user.username, r.createdAt, r.score);
       });
     } else if (n.replies.length === 0) {
       if (n.replies.length === 0 && n.user.username === "juliusomo") {
-        yourComment(n.id, n.content, n.createdAt, n.score, n.user.username);
+        yourComments.push(n);
+        const lastItem = yourComments[yourComments.length - 1];
+        console.log(lastItem);
+        yourComment(
+          lastItem.id,
+          lastItem.content,
+          lastItem.createdAt,
+          lastItem.score,
+          lastItem.user.username
+        );
       } else if (n.replies.length === 0 && n.user.username !== "juliusomo")
         createComment(n.id, n.user.username, n.createdAt, n.content, n.score);
     }
   });
 }
 deployAllComments();
-
 const sendButton = document.querySelector(".interactionButton");
 
 sendButton.addEventListener("click", () => {
@@ -496,8 +508,7 @@ function deleteComment(button, id) {
   });
 
   deleteTheComment.addEventListener("click", () => {
-    const id = parseInt(button.classList.value.split(" ")[1]);
-    console.log(button.classList.value);
+    // const id = parseInt(button.classList.value.split(" ")[1]);
     console.log(id);
     let index = data.comments.findIndex((obj) => {
       return obj.id === id;
@@ -547,13 +558,26 @@ function editComment(button, text, parent, parentContainer) {
 const replyBtns = document.querySelectorAll(
   ".commentContainer__comment__modify__reply"
 );
-replyBtns.forEach((btn) => {
+const otherButtons = document.querySelectorAll(".commentReplyContainer button");
+const rpyButtons = document.querySelectorAll(".commentContainer button");
+const allButtons = [...rpyButtons, ...otherButtons];
+
+allButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
     const id = parseInt(btn.classList.value.split(" ")[1]);
     const comment = data.comments.filter((n) => n.id === id);
+    if (comment.length === 0) {
+      data.comments.forEach((c) => {
+        if (c.replies.length !== 0) {
+          const secondComment = c.replies.filter((r) => r.id === id);
+          console.log(secondComment);
+        }
+      });
+    } else {
+      console.log(comment);
+    }
     // Crear un contenedor para agregar el comentario.
     // El boton para agregar el comentarion se hara por medio de un push a la seccion de respuestas del propio comentario.
-    // Al final se vuelve a ejecutar la funcion que crea todos los comentarios para crear la propia respuesta.
 
     // Extras
     // Agregar el nombre del usuario al que le estamos respondiendo dentro del text area.
