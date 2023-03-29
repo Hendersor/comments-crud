@@ -426,6 +426,146 @@ function yourComment(id, content, createdAt, score, user) {
   );
 }
 
+function yourCommentReply(id, content, createdAt, score, user) {
+  const yourCommentContainer = document.createElement("div");
+  yourCommentContainer.setAttribute("class", "yourCommentContainer");
+  yourCommentContainer.setAttribute("id", id);
+
+  const yourCommentContainer__info = document.createElement("div");
+  yourCommentContainer__info.setAttribute(
+    "class",
+    "yourCommentContainer__info"
+  );
+  const yourCommentContainer__info__name = document.createElement("div");
+  yourCommentContainer__info__name.setAttribute(
+    "class",
+    "yourCommentContainer__info__name"
+  );
+  const figure = document.createElement("figure");
+  const h2 = document.createElement("h2");
+  h2.innerText = user;
+  const span = document.createElement("span");
+  span.innerText = "you";
+  const p = document.createElement("p");
+  p.innerText = createdAt;
+
+  yourCommentContainer__info__name.appendChild(figure);
+  yourCommentContainer__info__name.appendChild(h2);
+  yourCommentContainer__info__name.appendChild(span);
+  yourCommentContainer__info__name.appendChild(p);
+
+  yourCommentContainer__info.appendChild(yourCommentContainer__info__name);
+  yourCommentContainer.appendChild(yourCommentContainer__info);
+
+  const commentContainer__comment = document.createElement("div");
+  commentContainer__comment.setAttribute("class", "commentContainer__comment");
+  const pComment = document.createElement("textarea");
+  commentContainer__comment.appendChild(pComment);
+  pComment.innerText = content;
+
+  const commentContainer__comment__modify = document.createElement("div");
+  commentContainer__comment__modify.setAttribute(
+    "class",
+    "commentContainer__comment__modify"
+  );
+  const commentContainer__comment__modify__votes =
+    document.createElement("div");
+  commentContainer__comment__modify__votes.setAttribute(
+    "class",
+    "commentContainer__comment__modify__votes"
+  );
+  const imgPlus = document.createElement("img");
+  imgPlus.setAttribute(
+    "src",
+    "https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521532/interactive-comments-section-main/images/icon-plus_hgbuxm.svg"
+  );
+  imgPlus.setAttribute("alt", "plus icon");
+  const h1 = document.createElement("h1");
+  h1.innerText = score;
+  const imgMinus = document.createElement("img");
+  imgMinus.setAttribute(
+    "src",
+    "https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521530/interactive-comments-section-main/images/icon-minus_lkzi7d.svg"
+  );
+
+  commentContainer__comment__modify__votes.appendChild(imgPlus);
+  commentContainer__comment__modify__votes.appendChild(h1);
+  commentContainer__comment__modify__votes.appendChild(imgMinus);
+
+  commentContainer__comment__modify.appendChild(
+    commentContainer__comment__modify__votes
+  );
+
+  const commentContainer__comment__modify__container =
+    document.createElement("div");
+  commentContainer__comment__modify__container.setAttribute(
+    "class",
+    "commentContainer__comment__modify__container"
+  );
+
+  const modifier_container = document.createElement("button");
+  modifier_container.setAttribute("class", "modifier_container");
+  modifier_container.classList.add(id);
+
+  const figureIcon = document.createElement("figure");
+  const imgDel = document.createElement("img");
+  imgDel.setAttribute(
+    "src",
+    "https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521530/interactive-comments-section-main/images/icon-delete_opxwow.svg"
+  );
+  imgDel.setAttribute("alt", "delete icon");
+  figureIcon.appendChild(imgDel);
+
+  const pText = document.createElement("p");
+  pText.setAttribute("class", "delete");
+  pText.innerText = "Delete";
+
+  modifier_container.appendChild(figureIcon);
+  modifier_container.appendChild(pText);
+
+  commentContainer__comment__modify__container.appendChild(modifier_container);
+
+  const modifier_containerV2 = document.createElement("button");
+  modifier_containerV2.setAttribute("class", "modifier_container");
+  modifier_containerV2.classList.add(id);
+
+  const figureV2 = document.createElement("figure");
+  const imgIcon3 = document.createElement("img");
+  imgIcon3.setAttribute(
+    "src",
+    "https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521530/interactive-comments-section-main/images/icon-edit_ofjwji.svg"
+  );
+  imgIcon3.setAttribute("alt", "edit icon");
+  figureV2.appendChild(imgIcon3);
+
+  const pTextV2 = document.createElement("p");
+  pTextV2.setAttribute("class", "edit");
+  pTextV2.innerText = "Edit";
+
+  modifier_containerV2.appendChild(figureV2);
+  modifier_containerV2.appendChild(pTextV2);
+
+  commentContainer__comment__modify__container.appendChild(
+    modifier_containerV2
+  );
+  commentContainer__comment__modify.appendChild(
+    commentContainer__comment__modify__container
+  );
+  commentContainer__comment.appendChild(commentContainer__comment__modify);
+  yourCommentContainer.appendChild(commentContainer__comment);
+  allCommentsContainer.appendChild(yourCommentContainer);
+  mainContainer.appendChild(allCommentsContainer);
+  body.appendChild(mainContainer);
+
+  deleteComment(modifier_container, id);
+  editComment(
+    modifier_containerV2,
+    pComment,
+    commentContainer__comment,
+    commentContainer__comment__modify
+  );
+}
+
 //Creating the new object inside de data
 function creatingData(comment) {
   const newData = {
@@ -555,6 +695,7 @@ function editComment(button, text, parent, parentContainer) {
   });
 }
 
+//Function to reply a comment
 const replyBtns = document.querySelectorAll(
   ".commentContainer__comment__modify__reply"
 );
@@ -570,7 +711,9 @@ allButtons.forEach((btn) => {
       data.comments.forEach((c) => {
         if (c.replies.length !== 0) {
           const secondComment = c.replies.filter((r) => r.id === id);
-          console.log(secondComment);
+          console.log(c);
+          const replyingTo = gettingTheComment(secondComment[0], btn, c);
+          console.log(replyingTo);
         }
       });
     } else {
@@ -584,3 +727,7 @@ allButtons.forEach((btn) => {
     // Arreglar el bug que se genera a la hora de eliminar un comentario.
   });
 });
+
+function gettingTheComment(comment, btn, c) {
+  console.log(comment, btn, c);
+}
