@@ -702,32 +702,26 @@ const replyBtns = document.querySelectorAll(
 const otherButtons = document.querySelectorAll(".commentReplyContainer button");
 const rpyButtons = document.querySelectorAll(".commentContainer button");
 const allButtons = [...rpyButtons, ...otherButtons];
+let finalComment;
 
 allButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
     const id = parseInt(btn.classList.value.split(" ")[1]);
     const comment = data.comments.filter((n) => n.id === id);
-    if (comment.length === 0) {
-      data.comments.forEach((c) => {
-        if (c.replies.length !== 0) {
-          const secondComment = c.replies.filter((r) => r.id === id);
-          console.log(c);
-          const replyingTo = gettingTheComment(secondComment[0], btn, c);
-          console.log(replyingTo);
-        }
-      });
-    } else {
-      console.log(comment);
-    }
-    // Crear un contenedor para agregar el comentario.
-    // El boton para agregar el comentarion se hara por medio de un push a la seccion de respuestas del propio comentario.
 
-    // Extras
-    // Agregar el nombre del usuario al que le estamos respondiendo dentro del text area.
-    // Arreglar el bug que se genera a la hora de eliminar un comentario.
+    if (comment.length === 0) {
+      findComment(id);
+    } else {
+      finalComment = comment;
+    }
+    console.log(finalComment);
   });
 });
 
-function gettingTheComment(comment, btn, c) {
-  console.log(comment, btn, c);
+function findComment(id) {
+  data.comments.forEach((c) => {
+    if (c.replies.length !== 0) {
+      finalComment = c.replies.filter((n) => n.id === id);
+    }
+  });
 }
