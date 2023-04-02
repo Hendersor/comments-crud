@@ -702,8 +702,8 @@ const replyBtns = document.querySelectorAll(
 const otherButtons = document.querySelectorAll(".commentReplyContainer button");
 const rpyButtons = document.querySelectorAll(".commentContainer button");
 const allButtons = [...rpyButtons, ...otherButtons];
-let finalComment;
 
+let finalComment;
 allButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
     const id = parseInt(btn.classList.value.split(" ")[1]);
@@ -714,7 +714,16 @@ allButtons.forEach((btn) => {
     } else {
       finalComment = comment;
     }
-    console.log(finalComment);
+
+    //Select the comment container
+    let commentContainer = btn.parentElement.parentElement.parentElement;
+    // while (
+    //   commentContainer.className !== "commentReplyContainer" ||
+    //   commentContainer.className !== "commentContainer"
+    // ) {
+    //   commentContainer = commentContainer.parentElement;
+    // }
+    createReplyContainer(commentContainer);
   });
 });
 
@@ -724,4 +733,29 @@ function findComment(id) {
       finalComment = c.replies.filter((n) => n.id === id);
     }
   });
+}
+
+function createReplyContainer(commentContainer) {
+  console.log(commentContainer);
+  const container = document.createElement("div");
+  container.setAttribute("class", "commentReplyContainer2");
+  const img = document.createElement("img");
+  img.setAttribute("class", "image");
+  img.setAttribute(
+    "src",
+    "https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521531/interactive-comments-section-main/images/avatars/image-juliusomo_zyjpmi.png"
+  );
+  const textArea = document.createElement("textarea");
+  textArea.setAttribute("class", "textArea");
+  const replyBtn = document.createElement("button");
+  replyBtn.setAttribute("class", "replyButton");
+  replyBtn.innerText = "REPLY";
+
+  container.appendChild(img);
+  container.appendChild(textArea);
+  container.appendChild(replyBtn);
+  commentContainer.parentNode.insertBefore(
+    container,
+    commentContainer.nextSibling
+  );
 }

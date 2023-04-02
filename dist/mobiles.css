@@ -322,6 +322,47 @@ body {
   width: 16px;
 }
 
+.commentReplyContainer2 {
+  height: 120px;
+  border-radius: 5px;
+  background-color: hsl(0, 0%, 100%);
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 795px;
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  justify-content: space-evenly;
+}
+.commentReplyContainer2 .image {
+  width: 40px;
+  height: 40px;
+}
+.commentReplyContainer2 .textArea {
+  height: 50%;
+  width: 50%;
+  border-radius: 5px;
+  font-size: 1rem;
+  text-align: justify;
+  border: 1px solid hsl(0, 0%, 90%);
+  outline: none;
+  resize: none;
+  font-family: "Rubik", sans-serif;
+  padding: 8px 15px;
+  margin: 10px 0px;
+}
+.commentReplyContainer2 .replyButton {
+  background-color: hsl(238, 40%, 52%);
+  font-weight: 700;
+  color: hsl(0, 0%, 100%);
+  border: none;
+  height: 40px;
+  width: 70px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
 .yourCommentContainer {
   padding: 12px;
   height: auto;

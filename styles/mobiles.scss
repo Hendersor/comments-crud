@@ -356,6 +356,49 @@ body {
   }
 }
 
+// Styles for reply
+.commentReplyContainer2 {
+  // padding: 12px;
+  height: 120px;
+  border-radius: 5px;
+  background-color: globals.$white;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 795px;
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  justify-content: space-evenly;
+  .image {
+    width: 40px;
+    height: 40px;
+  }
+  .textArea {
+    height: 50%;
+    width: 50%;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: justify;
+    border: 1px solid globals.$input;
+    outline: none;
+    resize: none;
+    font-family: globals.$font;
+    padding: 8px 15px;
+    margin: 10px 0px;
+  }
+  .replyButton {
+    background-color: globals.$moderateBlue;
+    font-weight: 700;
+    color: globals.$white;
+    border: none;
+    height: 40px;
+    width: 70px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    cursor: pointer;
+  }
+}
+
 // Styles for the created comment
 .yourCommentContainer {
   padding: 12px;
