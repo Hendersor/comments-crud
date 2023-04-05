@@ -406,8 +406,8 @@ body {
   border-radius: 5px;
   background-color: globals.$white;
   margin-bottom: 20px;
-  width: 80%;
-  align-self: flex-end;
+  // width: 80%;
+  // align-self: flex-end;
 
   .yourCommentContainer__info {
     .yourCommentContainer__info__name {
@@ -555,4 +555,10 @@ body {
       }
     }
   }
+}
+
+.reply {
+  width: 80%;
+  max-width: 795px;
+  align-self: flex-end;
 }

@@ -369,8 +369,6 @@ body {
   border-radius: 5px;
   background-color: hsl(0, 0%, 100%);
   margin-bottom: 20px;
-  width: 80%;
-  align-self: flex-end;
 }
 .yourCommentContainer .yourCommentContainer__info .yourCommentContainer__info__name {
   display: flex;
@@ -505,4 +503,10 @@ body {
   border-radius: 5px;
   font-size: 1rem;
   cursor: pointer;
+}
+
+.reply {
+  width: 80%;
+  max-width: 795px;
+  align-self: flex-end;
 }/*# sourceMappingURL=mobiles.css.map */

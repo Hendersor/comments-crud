@@ -286,7 +286,6 @@ function createReply(id, content, username, time, votes) {
 }
 
 function yourComment(id, content, createdAt, score, user) {
-  console.log(id);
   const yourCommentContainer = document.createElement("div");
   yourCommentContainer.setAttribute("class", "yourCommentContainer");
   yourCommentContainer.setAttribute("id", id);
@@ -428,7 +427,7 @@ function yourComment(id, content, createdAt, score, user) {
 
 function yourCommentReply(id, content, createdAt, score, user) {
   const yourCommentContainer = document.createElement("div");
-  yourCommentContainer.setAttribute("class", "yourCommentContainer");
+  yourCommentContainer.setAttribute("class", "yourCommentContainer reply");
   yourCommentContainer.setAttribute("id", id);
 
   const yourCommentContainer__info = document.createElement("div");
@@ -673,8 +672,8 @@ function deployAllComments() {
 
   data.comments.forEach((n) => {
     if (n.replies.length > 0) {
+      console.log("Comentario");
       createComment(n.id, n.user.username, n.createdAt, n.content, n.score);
-
       n.replies.forEach((r) => {
         if (r.user.username === "juliusomo") {
           console.log("julisomo");
@@ -689,9 +688,8 @@ function deployAllComments() {
           createReply(r.id, r.content, r.user.username, r.createdAt, r.score);
         }
       });
-
-      // Por cualquier bug, solo borra la condicional y quedate con el bucle .forEach
     } else if (n.replies.length === 0) {
+      console.log("Nuevo comentario");
       if (n.replies.length === 0 && n.user.username === "juliusomo") {
         yourComments.push(n);
         const lastItem = yourComments[yourComments.length - 1];
