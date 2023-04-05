@@ -63,7 +63,7 @@ const data = {
               png: "./images/avatars/image-juliusomo.png",
               webp: "./images/avatars/image-juliusomo.webp",
             },
-            username: "juliusomo",
+            username: "hendersor",
           },
         },
       ],
@@ -459,7 +459,7 @@ function yourCommentReply(id, content, createdAt, score, user) {
 
   const commentContainer__comment = document.createElement("div");
   commentContainer__comment.setAttribute("class", "commentContainer__comment");
-  const pComment = document.createElement("textarea");
+  const pComment = document.createElement("p");
   commentContainer__comment.appendChild(pComment);
   pComment.innerText = content;
 
@@ -585,35 +585,6 @@ function creatingData(comment) {
   data.comments.push(newData);
 }
 
-/// Deploy the replies and comments
-function deployAllComments() {
-  allCommentsContainer.innerHTML = "";
-  const yourComments = [];
-
-  data.comments.forEach((n) => {
-    if (n.replies.length > 0) {
-      createComment(n.id, n.user.username, n.createdAt, n.content, n.score);
-      n.replies.forEach((r) => {
-        createReply(r.id, r.content, r.user.username, r.createdAt, r.score);
-      });
-    } else if (n.replies.length === 0) {
-      if (n.replies.length === 0 && n.user.username === "juliusomo") {
-        yourComments.push(n);
-        const lastItem = yourComments[yourComments.length - 1];
-        console.log(lastItem);
-        yourComment(
-          lastItem.id,
-          lastItem.content,
-          lastItem.createdAt,
-          lastItem.score,
-          lastItem.user.username
-        );
-      } else if (n.replies.length === 0 && n.user.username !== "juliusomo")
-        createComment(n.id, n.user.username, n.createdAt, n.content, n.score);
-    }
-  });
-}
-deployAllComments();
 const sendButton = document.querySelector(".interactionButton");
 
 sendButton.addEventListener("click", () => {
@@ -695,48 +666,84 @@ function editComment(button, text, parent, parentContainer) {
   });
 }
 
+/// Deploy the replies and comments
+function deployAllComments() {
+  allCommentsContainer.innerHTML = "";
+  const yourComments = [];
+
+  data.comments.forEach((n) => {
+    if (n.replies.length > 0) {
+      createComment(n.id, n.user.username, n.createdAt, n.content, n.score);
+
+      n.replies.forEach((r) => {
+        if (r.user.username === "juliusomo") {
+          console.log("julisomo");
+          yourCommentReply(
+            r.id,
+            r.content,
+            r.createdAt,
+            r.score,
+            r.user.username
+          );
+        } else if (r.user.username !== "juliusomo") {
+          createReply(r.id, r.content, r.user.username, r.createdAt, r.score);
+        }
+      });
+
+      // Por cualquier bug, solo borra la condicional y quedate con el bucle .forEach
+    } else if (n.replies.length === 0) {
+      if (n.replies.length === 0 && n.user.username === "juliusomo") {
+        yourComments.push(n);
+        const lastItem = yourComments[yourComments.length - 1];
+        yourComment(
+          lastItem.id,
+          lastItem.content,
+          lastItem.createdAt,
+          lastItem.score,
+          lastItem.user.username
+        );
+      } else if (n.replies.length === 0 && n.user.username !== "juliusomo")
+        createComment(n.id, n.user.username, n.createdAt, n.content, n.score);
+    }
+  });
+}
+deployAllComments();
+
+// Over here
+
 //Function to reply a comment
-const replyBtns = document.querySelectorAll(
-  ".commentContainer__comment__modify__reply"
-);
 const otherButtons = document.querySelectorAll(".commentReplyContainer button");
 const rpyButtons = document.querySelectorAll(".commentContainer button");
 const allButtons = [...rpyButtons, ...otherButtons];
 
 let finalComment;
+let commentContainer;
 allButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
     const id = parseInt(btn.classList.value.split(" ")[1]);
-    const comment = data.comments.filter((n) => n.id === id);
-
-    if (comment.length === 0) {
-      findComment(id);
-    } else {
-      finalComment = comment;
-    }
-
-    //Select the comment container
+    const comment = data.comments.filter((n) => n.id === id)[0];
     let commentContainer = btn.parentElement.parentElement.parentElement;
-    // while (
-    //   commentContainer.className !== "commentReplyContainer" ||
-    //   commentContainer.className !== "commentContainer"
-    // ) {
-    //   commentContainer = commentContainer.parentElement;
-    // }
-    createReplyContainer(commentContainer);
+    // ///////////////////////////////////
+
+    let replyingTo;
+    let theMainComment;
+    theMainComment = data.comments.filter((c) => c.id === id);
+    if (theMainComment.length !== 0) {
+      replyingTo = comment.user.username;
+    } else {
+      data.comments.forEach((c) => {
+        const replyComment = c.replies.filter((c) => c.id === id);
+        if (replyComment.length !== 0) {
+          theMainComment = [c];
+          replyingTo = replyComment[0].user.username;
+        }
+      });
+    }
+    createReplyContainer(commentContainer, replyingTo, theMainComment);
   });
 });
 
-function findComment(id) {
-  data.comments.forEach((c) => {
-    if (c.replies.length !== 0) {
-      finalComment = c.replies.filter((n) => n.id === id);
-    }
-  });
-}
-
-function createReplyContainer(commentContainer) {
-  console.log(commentContainer);
+function createReplyContainer(commentContainer, replyingTo, theMainComment) {
   const container = document.createElement("div");
   container.setAttribute("class", "commentReplyContainer2");
   const img = document.createElement("img");
@@ -747,6 +754,9 @@ function createReplyContainer(commentContainer) {
   );
   const textArea = document.createElement("textarea");
   textArea.setAttribute("class", "textArea");
+  let user = `@${replyingTo}`;
+  textArea.innerText = user;
+
   const replyBtn = document.createElement("button");
   replyBtn.setAttribute("class", "replyButton");
   replyBtn.innerText = "REPLY";
@@ -758,4 +768,22 @@ function createReplyContainer(commentContainer) {
     container,
     commentContainer.nextSibling
   );
+
+  replyBtn.addEventListener("click", () => {
+    let finalReply = textArea.value;
+    deployReply(replyingTo, finalReply, theMainComment);
+  });
+}
+
+function deployReply(replyingTo, reply, theMainComment) {
+  const replyData = {
+    id: Math.floor(Math.random() * 100),
+    createdAt: "Just now",
+    content: reply,
+    replyingTo: replyingTo,
+    user: { username: "juliusomo" },
+    score: 5,
+  };
+  theMainComment[0].replies.push(replyData);
+  deployAllComments();
 }
