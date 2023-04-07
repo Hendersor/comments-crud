@@ -710,14 +710,8 @@ function editComment(button, text, parent, parentContainer) {
     const id = parseInt(button.classList.value.split(" ")[1]);
     // Encuentra el comentario a editar en la seccion principal
     let comment = data.comments.filter((c) => c.id === id);
-    let theComment;
     // condicional para buscar dentro de los comentarios
     if (comment.length === 0) {
-      //  Buscar dentro de las respuestas
-      // data.comments.forEach((c) => {
-      //   const comment = c.replies.filter((i) => i.id === id);
-      //   console.log(comment);
-      // });
       for (let i = 0; i < data.comments.length; i++) {
         const comment1 = data.comments[i];
         const finalComment = comment1.replies.filter(
@@ -729,7 +723,6 @@ function editComment(button, text, parent, parentContainer) {
         }
       }
     }
-    console.log(comment);
 
     const commentFilter = comment[0].content;
 
