@@ -73,44 +73,44 @@ const data = {
 const mainContainer = document.querySelector(".mainContainer");
 const allCommentsContainer = document.querySelector(".allCommentsContainer");
 
-// function deployAllComments() {
-//   allCommentsContainer.innerHTML = "";
-//   const yourComments = [];
+function deployAllComments() {
+  allCommentsContainer.innerHTML = "";
+  const yourComments = [];
 
-//   data.comments.forEach((n) => {
-//     if (n.replies.length > 0) {
-//       createComment(n.id, n.user.username, n.createdAt, n.content, n.score);
-//       n.replies.forEach((r) => {
-//         if (r.user.username === "juliusomo") {
-//           console.log("julisomo");
-//           yourCommentReply(
-//             r.id,
-//             r.content,
-//             r.createdAt,
-//             r.score,
-//             r.user.username
-//           );
-//         } else if (r.user.username !== "juliusomo") {
-//           createReply(r.id, r.content, r.user.username, r.createdAt, r.score);
-//         }
-//       });
-//     } else if (n.replies.length === 0) {
-//       if (n.replies.length === 0 && n.user.username === "juliusomo") {
-//         yourComments.push(n);
-//         const lastItem = yourComments[yourComments.length - 1];
-//         yourComment(
-//           lastItem.id,
-//           lastItem.content,
-//           lastItem.createdAt,
-//           lastItem.score,
-//           lastItem.user.username
-//         );
-//       } else if (n.replies.length === 0 && n.user.username !== "juliusomo")
-//         createComment(n.id, n.user.username, n.createdAt, n.content, n.score);
-//     }
-//   });
-//   // selectingAllTheBts();
-// }
+  data.comments.forEach((n) => {
+    if (n.replies.length > 0) {
+      createComment(n.id, n.user.username, n.createdAt, n.content, n.score);
+      n.replies.forEach((r) => {
+        if (r.user.username === "juliusomo") {
+          console.log("julisomo");
+          yourCommentReply(
+            r.id,
+            r.content,
+            r.createdAt,
+            r.score,
+            r.user.username
+          );
+        } else if (r.user.username !== "juliusomo") {
+          createReply(r.id, r.content, r.user.username, r.createdAt, r.score);
+        }
+      });
+    } else if (n.replies.length === 0) {
+      if (n.replies.length === 0 && n.user.username === "juliusomo") {
+        yourComments.push(n);
+        const lastItem = yourComments[yourComments.length - 1];
+        yourComment(
+          lastItem.id,
+          lastItem.content,
+          lastItem.createdAt,
+          lastItem.score,
+          lastItem.user.username
+        );
+      } else if (n.replies.length === 0 && n.user.username !== "juliusomo")
+        createComment(n.id, n.user.username, n.createdAt, n.content, n.score);
+    }
+  });
+  // selectingAllTheBts();
+}
 function selectingAllTheBts() {
   let otherButtons = document.querySelectorAll(".commentReplyContainer button");
   let rpyButtons = document.querySelectorAll(".commentContainer button");
