@@ -70,47 +70,10 @@ const data = {
     },
   ],
 };
+
 const mainContainer = document.querySelector(".mainContainer");
 const allCommentsContainer = document.querySelector(".allCommentsContainer");
 
-function deployAllComments() {
-  allCommentsContainer.innerHTML = "";
-  const yourComments = [];
-
-  data.comments.forEach((n) => {
-    if (n.replies.length > 0) {
-      createComment(n.id, n.user.username, n.createdAt, n.content, n.score);
-      n.replies.forEach((r) => {
-        if (r.user.username === "juliusomo") {
-          console.log("julisomo");
-          yourCommentReply(
-            r.id,
-            r.content,
-            r.createdAt,
-            r.score,
-            r.user.username
-          );
-        } else if (r.user.username !== "juliusomo") {
-          createReply(r.id, r.content, r.user.username, r.createdAt, r.score);
-        }
-      });
-    } else if (n.replies.length === 0) {
-      if (n.replies.length === 0 && n.user.username === "juliusomo") {
-        yourComments.push(n);
-        const lastItem = yourComments[yourComments.length - 1];
-        yourComment(
-          lastItem.id,
-          lastItem.content,
-          lastItem.createdAt,
-          lastItem.score,
-          lastItem.user.username
-        );
-      } else if (n.replies.length === 0 && n.user.username !== "juliusomo")
-        createComment(n.id, n.user.username, n.createdAt, n.content, n.score);
-    }
-  });
-  // selectingAllTheBts();
-}
 function selectingAllTheBts() {
   let otherButtons = document.querySelectorAll(".commentReplyContainer button");
   let rpyButtons = document.querySelectorAll(".commentContainer button");
@@ -669,44 +632,31 @@ sendButton.addEventListener("click", () => {
 });
 
 //Function to delete your comment
-function deleteComment(button, id) {
-  const modal = document.querySelector(".modal");
-  const closeModal = document.querySelector(".btnContainer .no");
-  const deleteTheComment = document.querySelector(".btnContainer .yes");
+function deleteComment(button) {
+  let idButton;
 
   button.addEventListener("click", () => {
-    const body = document.querySelector("body");
-    body.style.overflow = "hidden";
-    modal.showModal();
-    console.log(data);
-  });
-
-  closeModal.addEventListener("click", () => {
-    body.style.overflow = "auto";
-    modal.close();
-  });
-
-  deleteTheComment.addEventListener("click", () => {
-    // const id = parseInt(button.classList.value.split(" ")[1]);
-    console.log(id);
-    let index = data.comments.findIndex((obj) => {
-      return obj.id === id;
-    });
-
-    console.log(index);
-
-    data.comments.splice(index, 1);
-    deployAllComments();
-    modal.close();
-
-    console.log(data);
-    body.style.overflow = "auto";
+    idButton = parseInt(button.classList.value.split(" ")[1]);
+    const idToDelete = data.comments.findIndex((i) => i.id === idButton);
+    if (idToDelete !== -1) {
+      data.comments.splice(idToDelete, 1);
+      deployAllComments();
+    } else if (idToDelete === -1) {
+      data.comments.forEach((r) => {
+        const idToDelete = r.replies.findIndex((i) => i.id === idButton);
+        if (idToDelete !== -1) {
+          r.replies.splice(idToDelete, 1);
+          deployAllComments();
+        }
+      });
+    }
   });
 }
 
 //Function to edit your comment
 function editComment(button, text, parent, parentContainer) {
   button.addEventListener("click", () => {
+    console.log(button);
     const id = parseInt(button.classList.value.split(" ")[1]);
     // Encuentra el comentario a editar en la seccion principal
     let comment = data.comments.filter((c) => c.id === id);
@@ -752,7 +702,7 @@ function editComment(button, text, parent, parentContainer) {
 /// Deploy the replies and comments
 function deployAllComments() {
   allCommentsContainer.innerHTML = "";
-  const yourComments = [];
+  let lastCommentByJuliusomo = null;
 
   data.comments.forEach((n) => {
     if (n.replies.length > 0) {
@@ -772,29 +722,21 @@ function deployAllComments() {
       });
     } else if (n.replies.length === 0) {
       if (n.replies.length === 0 && n.user.username === "juliusomo") {
-        yourComments.push(n);
-        const lastItem = yourComments[yourComments.length - 1];
+        lastCommentByJuliusomo = n;
         yourComment(
-          lastItem.id,
-          lastItem.content,
-          lastItem.createdAt,
-          lastItem.score,
-          lastItem.user.username
+          lastCommentByJuliusomo.id,
+          lastCommentByJuliusomo.content,
+          lastCommentByJuliusomo.createdAt,
+          lastCommentByJuliusomo.score,
+          lastCommentByJuliusomo.user.username
         );
       } else if (n.replies.length === 0 && n.user.username !== "juliusomo")
         createComment(n.id, n.user.username, n.createdAt, n.content, n.score);
     }
   });
+
   selectingAllTheBts();
 }
-
-// selectingAllTheBts();
-// let finalComment;
-// let commentContainer;
-
-// Buttons variables
-
-// Select all the buttons for the reply event
 
 function createReplyContainer(commentContainer, replyingTo, theMainComment) {
   const container = document.createElement("div");
