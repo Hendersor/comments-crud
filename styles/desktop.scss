@@ -28,9 +28,29 @@
 }
 
 .commentContainer {
+  align-self: center;
   .commentContainer__comment {
     .desktopInv {
       display: none;
     }
+  }
+}
+
+.yourCommentContainer {
+  width: 98%;
+  align-self: center;
+  max-width: 994px;
+}
+
+.commentReplyContainer,
+.commentReplyContainer2 {
+  margin-right: 60px;
+}
+
+.allCommentsContainer {
+  .reply {
+    margin-right: 60px;
+    align-self: flex-end;
+    max-width: 819px;
   }
 }

@@ -39,7 +39,7 @@ const data = {
         {
           id: 3,
           content:
-            "If you're still new, I'd recommend focusing on the fundamentals of HTML, CSS, and JS before considering React. It's very tempting to jump ahead but lay a solid foundation first.",
+            "@maxblagun If you're still new, I'd recommend focusing on the fundamentals of HTML, CSS, and JS before considering React. It's very tempting to jump ahead but lay a solid foundation first.",
           createdAt: "1 week ago",
           score: 4,
           replyingTo: "maxblagun",
@@ -54,7 +54,7 @@ const data = {
         {
           id: 4,
           content:
-            "I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant.",
+            "@ramsesmiron I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant.",
           createdAt: "2 days ago",
           score: 2,
           replyingTo: "ramsesmiron",
@@ -83,10 +83,9 @@ function selectingAllTheBts() {
       const id = parseInt(btn.classList.value.split(" ")[1]);
       const comment = data.comments.filter((n) => n.id === id)[0];
       let commentContainer = btn.parentElement.parentElement.parentElement;
-      // ///////////////////////////////////
-
       let replyingTo;
       let theMainComment;
+
       theMainComment = data.comments.filter((c) => c.id === id);
       if (theMainComment.length !== 0) {
         replyingTo = comment.user.username;
@@ -144,37 +143,6 @@ function createComment(id, userName, time, comment, votes) {
   commentContainer__comment__modify.setAttribute(
     "class",
     "commentContainer__comment__modify"
-  );
-
-  const commentContainer__comment__modify__votes =
-    document.createElement("div");
-  commentContainer__comment__modify__votes.setAttribute(
-    "class",
-    "commentContainer__comment__modify__votes"
-  );
-
-  const imgPlusIcon = document.createElement("img");
-  imgPlusIcon.setAttribute(
-    "src",
-    "https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521532/interactive-comments-section-main/images/icon-plus_hgbuxm.svg"
-  );
-  imgPlusIcon.setAttribute("alt", "plus icon");
-
-  const votesNumber = document.createElement("h1");
-  votesNumber.innerText = votes;
-  const imgMinusIcon = document.createElement("img");
-  imgMinusIcon.setAttribute(
-    "src",
-    "https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521530/interactive-comments-section-main/images/icon-minus_lkzi7d.svg"
-  );
-  imgMinusIcon.setAttribute("alt", "minus icon");
-
-  commentContainer__comment__modify__votes.appendChild(imgPlusIcon);
-  commentContainer__comment__modify__votes.appendChild(votesNumber);
-  commentContainer__comment__modify__votes.appendChild(imgMinusIcon);
-
-  commentContainer__comment__modify.appendChild(
-    commentContainer__comment__modify__votes
   );
 
   const commentContainer__comment__modify__reply =
@@ -252,37 +220,6 @@ function createReply(id, content, username, time, votes) {
     "class",
     "commentReplyContainer__comment__modify"
   );
-  const commentReplyContainer__comment__modify__votes =
-    document.createElement("div");
-  commentReplyContainer__comment__modify__votes.setAttribute(
-    "class",
-    "commentReplyContainer__comment__modify__votes"
-  );
-
-  const imgIcon1 = document.createElement("img");
-  imgIcon1.setAttribute(
-    "src",
-    "https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521532/interactive-comments-section-main/images/icon-plus_hgbuxm.svg"
-  );
-  imgIcon1.setAttribute("alt", "plus icon");
-
-  const h1 = document.createElement("h1");
-  h1.innerText = votes;
-
-  const imgIcon2 = document.createElement("img");
-  imgIcon2.setAttribute(
-    "src",
-    "https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521530/interactive-comments-section-main/images/icon-minus_lkzi7d.svg"
-  );
-  imgIcon2.setAttribute("alt", "minus icon");
-
-  commentReplyContainer__comment__modify__votes.appendChild(imgIcon1);
-  commentReplyContainer__comment__modify__votes.appendChild(h1);
-  commentReplyContainer__comment__modify__votes.appendChild(imgIcon2);
-
-  commentReplyContainer__comment__modify.appendChild(
-    commentReplyContainer__comment__modify__votes
-  );
 
   const commentReplyContainer__comment__modify__reply =
     document.createElement("button");
@@ -358,33 +295,6 @@ function yourComment(id, content, createdAt, score, user) {
   commentContainer__comment__modify.setAttribute(
     "class",
     "commentContainer__comment__modify"
-  );
-  const commentContainer__comment__modify__votes =
-    document.createElement("div");
-  commentContainer__comment__modify__votes.setAttribute(
-    "class",
-    "commentContainer__comment__modify__votes"
-  );
-  const imgPlus = document.createElement("img");
-  imgPlus.setAttribute(
-    "src",
-    "https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521532/interactive-comments-section-main/images/icon-plus_hgbuxm.svg"
-  );
-  imgPlus.setAttribute("alt", "plus icon");
-  const h1 = document.createElement("h1");
-  h1.innerText = score;
-  const imgMinus = document.createElement("img");
-  imgMinus.setAttribute(
-    "src",
-    "https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521530/interactive-comments-section-main/images/icon-minus_lkzi7d.svg"
-  );
-
-  commentContainer__comment__modify__votes.appendChild(imgPlus);
-  commentContainer__comment__modify__votes.appendChild(h1);
-  commentContainer__comment__modify__votes.appendChild(imgMinus);
-
-  commentContainer__comment__modify.appendChild(
-    commentContainer__comment__modify__votes
   );
 
   const commentContainer__comment__modify__container =
@@ -498,33 +408,6 @@ function yourCommentReply(id, content, createdAt, score, user) {
   commentContainer__comment__modify.setAttribute(
     "class",
     "commentContainer__comment__modify"
-  );
-  const commentContainer__comment__modify__votes =
-    document.createElement("div");
-  commentContainer__comment__modify__votes.setAttribute(
-    "class",
-    "commentContainer__comment__modify__votes"
-  );
-  const imgPlus = document.createElement("img");
-  imgPlus.setAttribute(
-    "src",
-    "https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521532/interactive-comments-section-main/images/icon-plus_hgbuxm.svg"
-  );
-  imgPlus.setAttribute("alt", "plus icon");
-  const h1 = document.createElement("h1");
-  h1.innerText = score;
-  const imgMinus = document.createElement("img");
-  imgMinus.setAttribute(
-    "src",
-    "https://res.cloudinary.com/dwdz4mn27/image/upload/v1677521530/interactive-comments-section-main/images/icon-minus_lkzi7d.svg"
-  );
-
-  commentContainer__comment__modify__votes.appendChild(imgPlus);
-  commentContainer__comment__modify__votes.appendChild(h1);
-  commentContainer__comment__modify__votes.appendChild(imgMinus);
-
-  commentContainer__comment__modify.appendChild(
-    commentContainer__comment__modify__votes
   );
 
   const commentContainer__comment__modify__container =
@@ -749,7 +632,7 @@ function createReplyContainer(commentContainer, replyingTo, theMainComment) {
   );
   const textArea = document.createElement("textarea");
   textArea.setAttribute("class", "textArea");
-  let user = `@${replyingTo}`;
+  let user = `@${replyingTo} `;
   textArea.innerText = user;
 
   const replyBtn = document.createElement("button");
@@ -766,7 +649,10 @@ function createReplyContainer(commentContainer, replyingTo, theMainComment) {
 
   replyBtn.addEventListener("click", () => {
     let finalReply = textArea.value;
-    deployReply(replyingTo, finalReply, theMainComment);
+    const content = finalReply.split(" ")[1];
+    if (content !== "") {
+      deployReply(replyingTo, finalReply, theMainComment);
+    }
   });
 }
 
