@@ -1,4 +1,26 @@
 # Comments CRUD
+### English
+### What is it and how is it built?
+It is a comments section that allows you to create, edit, and delete your own comments, as well as reply to other users' comments. It is built with HTML, SASS, and Javascript. The design in Figma and data in JSON format were provided by Frontend Mentor, and I was responsible for implementing it and making it work.
+- Semantic HTML 5
+- SASS
+- DOM manipulation
+- Flexbox
+- Arrays and their methods
+
+### What did I learn and what challenges did I face?
+This is the project that has demanded the most from me at any level, with a lot of manipulation of the DOM, work with arrays and their methods. I had previously worked with DOM manipulation in other projects and this one allowed me to realize how comfortable I felt with it. The challenge began when it was time to extract certain data from the main data and start manipulating arrays. Another thing I did was start working with git branches. The idea was not to work on the main branch every time I wanted to fix a bug or change something.
+
+
+### The project allowed me to
+- Practice working with arrays extensively
+- Manipulating the DOM
+- Using methods like filter, forEach, among others.
+- Using git branch and git merge
+![Comments crud image](https://res.cloudinary.com/dwdz4mn27/image/upload/v1682554950/CommentsDesktop_kqvoln.png)
+
+
+### Español
 ### ¿Qué es y como esta construido?
 Es una seccion de comentarios que te permite crear editar y eliminar tus propios comentarios al igual que
 responderles a otros usuarios. Esta construido con HTML, SASS y Javascript. El diseño de figma y la data en formato JSON
